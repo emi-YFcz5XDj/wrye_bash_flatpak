@@ -1,5 +1,5 @@
 id: io.github.wrye_bash.wrye_bash
-runtime: org.gnome.Sdk
+runtime: org.gnome.Platform
 runtime-version: '48'
 sdk: org.gnome.Sdk
 sdk-extensions:
@@ -11,8 +11,10 @@ finish-args:
   - --socket=x11
   - --socket=wayland
   - --socket=pulseaudio
-  - --filesystem=home/.var/app/com.valvesoftware.Steam/data/Steam/steamapps:rw
-  - --filesystem=home/.local/share/Steam/steamapps:rw
+  - --device=dri
+  - --filesystem=home/.var/app/com.valvesoftware.Steam/data/Steam:rw
+  - --filesystem=xdg-data/Steam:rw
+  - --filesystem=home/.steam/root:rw
 modules:
   - name: libgit2
     buildsystem: cmake-ninja
@@ -31,14 +33,25 @@ modules:
           type: anitya
           project-id: 1627
           url-template: https://github.com/libgit2/libgit2/archive/refs/tags/v$version.tar.gz
-
+    cleanup:
+      - '*'
   - python3-setuptools-scm.yaml
-  - python3-reflink.yaml
-  - python3-pymupdf.yaml
   - python3-setuptools_rust.yaml
   - python3-maturin.yaml # Thanks PyGithub
+  - python3-cffi.yaml #
   - python3-cryptography.yaml # Thanks again
   - python3-requirements-scripts.yaml
+
+  - name: binutils_strings
+    buildsystem: simple
+    build-options:
+      strip: true
+    build-commands:
+      - install -Dm755 /usr/bin/strings -t ${FLATPAK_DEST}/bin/
+      - install -Dm755 /usr/lib/$(gcc -print-multiarch)/libbfd-*.so -t ${FLATPAK_DEST}/lib/
+      - install -Dm755 /usr/lib/$(gcc -print-multiarch)/libsframe.so* -t ${FLATPAK_DEST}/lib/
+  - python3-reflink.yaml
+  - python3-pymupdf.yaml
   - python3-requirements.yaml
 
   - name: wrye_bash
@@ -48,8 +61,9 @@ modules:
       - install -Dm644 io.github.wrye_bash.wrye_bash.desktop -t "${FLATPAK_DEST}"/share/applications
       - install -Dm644 Mopy/bash/images/bash.svg "${FLATPAK_DEST}"/share/icons/hicolor/scalable/apps/io.github.wrye_bash.wrye_bash.svg
 
-      - patch -Np1 -i 0001-Make-BashBugDump-work-globally.patch
-      - 'sed -i "s/''bash.update_check.enabled: True''/''bash.update_check.enabled'': False/" Mopy/bash/basher/constants.py'
+      - patch -Np1 -i 0001_write_BashBugDump_to_flatpak_data.patch
+      - patch -Np1 -i 0002_detect_flatpak_steam.patch
+      - patch -Np1 -i 0003_change_game_not_found_dialog.patch
 
       - python scripts/compile_l10n.py
       - python -O -m compileall Mopy/bash
@@ -58,13 +72,7 @@ modules:
         mkdir -p Mopy/taglists/"$game_name";
         cp -a "$game_name"_masterlist.yaml Mopy/taglists/"$game_name"/taglist.yaml; done
 
-      - mkdir -p "${FLATPAK_DEST}"/share/wrye_bash/'Bash Patches'
-      - cp -a 'Mopy/Bash Patches' "${FLATPAK_DEST}"/share/wrye_bash/
-      - cp -a Mopy/bash "${FLATPAK_DEST}"/share/wrye_bash
-      - cp -a Mopy/Docs "${FLATPAK_DEST}"/share/wrye_bash
-      - cp -a Mopy/templates "${FLATPAK_DEST}"/share/wrye_bash
-      - install -Dm644 'Mopy/Wrye Bash Launcher.pyw' -t "${FLATPAK_DEST}"/share/wrye_bash
-      - install -Dm644 Mopy/bash_default.ini -t "${FLATPAK_DEST}"/share/wrye_bash
+      - cp -a Mopy/ "${FLATPAK_DEST}"/share/wrye_bash/
       - install -Dm644 LICENSE.md "${FLATPAK_DEST}"/share/licenses/wrye_bash/LICENSE.md
       - install -Dm644 Mopy/LICENSE-THIRD-PARTY "${FLATPAK_DEST}"/share/licenses/wrye_bash/LICENSE-THIRD-PARTY
     sources:
@@ -76,7 +84,11 @@ modules:
       - type: file
         path: io.github.wrye_bash.wrye_bash.desktop
       - type: file
-        path: 0001-Make-BashBugDump-work-globally.patch
+        path: 0001_write_BashBugDump_to_flatpak_data.patch
+      - type: file
+        path: 0002_detect_flatpak_steam.patch
+      - type: file
+        path: 0003_change_game_not_found_dialog.patch
       - type: file
         url: https://raw.githubusercontent.com/loot/enderal/v0.21/masterlist.yaml
         dest-filename: Enderal_masterlist.yaml
@@ -126,3 +138,4 @@ modules:
       - /share/wrye_bash/bash/l10n/*.po
       - /share/wrye_bash/bash/l10n/template.pot
       - /share/wrye_bash/bash/compiled
+      - /share/wrye_bash/LICENSE-THIRD-PARTY
