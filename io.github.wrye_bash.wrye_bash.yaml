@@ -1,0 +1,128 @@
+id: io.github.wrye_bash.wrye_bash
+runtime: org.gnome.Sdk
+runtime-version: '48'
+sdk: org.gnome.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.llvm20
+  - org.freedesktop.Sdk.Extension.rust-stable
+command: wrye_bash
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --filesystem=home/.var/app/com.valvesoftware.Steam/data/Steam/steamapps:rw
+  - --filesystem=home/.local/share/Steam/steamapps:rw
+modules:
+  - name: libgit2
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_INSTALL_PREFIX=/app
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DUSE_SSH=exec
+      - -DREGEX_BACKEND=regcomp
+      - -DBUILD_TESTS=OFF
+      - -DBUILD_CLI=OFF
+    sources:
+      - type: archive
+        url: https://github.com/libgit2/libgit2/archive/refs/tags/v1.9.0.tar.gz
+        sha256: 75b27d4d6df44bd34e2f70663cfd998f5ec41e680e1e593238bbe517a84c7ed2
+        x-checker-data:
+          type: anitya
+          project-id: 1627
+          url-template: https://github.com/libgit2/libgit2/archive/refs/tags/v$version.tar.gz
+
+  - python3-setuptools-scm.yaml
+  - python3-reflink.yaml
+  - python3-pymupdf.yaml
+  - python3-setuptools_rust.yaml
+  - python3-maturin.yaml # Thanks PyGithub
+  - python3-cryptography.yaml # Thanks again
+  - python3-requirements-scripts.yaml
+  - python3-requirements.yaml
+
+  - name: wrye_bash
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 io.github.wrye_bash.wrye_bash.sh "${FLATPAK_DEST}"/bin/wrye_bash
+      - install -Dm644 io.github.wrye_bash.wrye_bash.desktop -t "${FLATPAK_DEST}"/share/applications
+      - install -Dm644 Mopy/bash/images/bash.svg "${FLATPAK_DEST}"/share/icons/hicolor/scalable/apps/io.github.wrye_bash.wrye_bash.svg
+
+      - patch -Np1 -i 0001-Make-BashBugDump-work-globally.patch
+      - 'sed -i "s/''bash.update_check.enabled: True''/''bash.update_check.enabled'': False/" Mopy/bash/basher/constants.py'
+
+      - python scripts/compile_l10n.py
+      - python -O -m compileall Mopy/bash
+      - for game_name in Enderal Fallout3 FalloutNV Fallout4 Fallout4VR 
+        Morrowind Oblivion Skyrim SkyrimSE SkyrimVR Starfield; do
+        mkdir -p Mopy/taglists/"$game_name";
+        cp -a "$game_name"_masterlist.yaml Mopy/taglists/"$game_name"/taglist.yaml; done
+
+      - mkdir -p "${FLATPAK_DEST}"/share/wrye_bash/'Bash Patches'
+      - cp -a 'Mopy/Bash Patches' "${FLATPAK_DEST}"/share/wrye_bash/
+      - cp -a Mopy/bash "${FLATPAK_DEST}"/share/wrye_bash
+      - cp -a Mopy/Docs "${FLATPAK_DEST}"/share/wrye_bash
+      - cp -a Mopy/templates "${FLATPAK_DEST}"/share/wrye_bash
+      - install -Dm644 'Mopy/Wrye Bash Launcher.pyw' -t "${FLATPAK_DEST}"/share/wrye_bash
+      - install -Dm644 Mopy/bash_default.ini -t "${FLATPAK_DEST}"/share/wrye_bash
+      - install -Dm644 LICENSE.md "${FLATPAK_DEST}"/share/licenses/wrye_bash/LICENSE.md
+      - install -Dm644 Mopy/LICENSE-THIRD-PARTY "${FLATPAK_DEST}"/share/licenses/wrye_bash/LICENSE-THIRD-PARTY
+    sources:
+      - type: archive
+        url: https://github.com/wrye-bash/wrye-bash/archive/refs/tags/v314.tar.gz
+        sha256: 663c1d1043483bcfbc0ccfb60b571be7b8bbc6670e93821035ad846cca106f8c
+      - type: file
+        path: io.github.wrye_bash.wrye_bash.sh
+      - type: file
+        path: io.github.wrye_bash.wrye_bash.desktop
+      - type: file
+        path: 0001-Make-BashBugDump-work-globally.patch
+      - type: file
+        url: https://raw.githubusercontent.com/loot/enderal/v0.21/masterlist.yaml
+        dest-filename: Enderal_masterlist.yaml
+        sha256: e692331dea4f852b79a6456429ad9e5ac22627b926da7e7243e4577e149d7e29
+      - type: file
+        url: https://raw.githubusercontent.com/loot/fallout3/v0.21/masterlist.yaml
+        dest-filename: Fallout3_masterlist.yaml
+        sha256: 28b423d4d4e5e8f275b915e9b80ec01166d3e7a4e552034129f64f0c22f77656
+      - type: file
+        url: https://raw.githubusercontent.com/loot/falloutnv/v0.21/masterlist.yaml
+        dest-filename: FalloutNV_masterlist.yaml
+        sha256: 508efadd7581d4eaeff20e05076a3cdb08f0e9e6c5f77f3527bde70299c82a4a
+      - type: file
+        url: https://raw.githubusercontent.com/loot/fallout4/v0.21/masterlist.yaml
+        dest-filename: Fallout4_masterlist.yaml
+        sha256: 9dc26d71ce94973826922dad824aa0778e510c0bafdcbe2f427ee293d6427dff
+      - type: file
+        url: https://raw.githubusercontent.com/loot/fallout4vr/v0.21/masterlist.yaml
+        dest-filename: Fallout4VR_masterlist.yaml
+        sha256: 408b0339b5e3017ff9ec54719b8660ed76756bec0d8a617e9c8bee25d4017630
+      - type: file
+        url: https://raw.githubusercontent.com/loot/morrowind/v0.21/masterlist.yaml
+        dest-filename: Morrowind_masterlist.yaml
+        sha256: ec6d614a529382a3fa2abbd328667b374084dcc6cc7e40aceeed647263647aa6
+      - type: file
+        url: https://raw.githubusercontent.com/loot/oblivion/v0.21/masterlist.yaml
+        dest-filename: Oblivion_masterlist.yaml
+        sha256: cf9659ee6588c56fa99f118197afd774e9bfd77c4e8fc7507a0744e52018c6fc
+      - type: file
+        url: https://raw.githubusercontent.com/loot/skyrim/v0.21/masterlist.yaml
+        dest-filename: Skyrim_masterlist.yaml
+        sha256: 4fd84657e78729a68e54d76a853f965cd370e6928129d9ff1d62e9476842abf2
+      - type: file
+        url: https://raw.githubusercontent.com/loot/skyrimse/v0.21/masterlist.yaml
+        dest-filename: SkyrimSE_masterlist.yaml
+        sha256: 4a8790e33c2d15af9fce7454a82b31a7978367aaaafd3294689c16f1d199e614
+      - type: file
+        url: https://raw.githubusercontent.com/loot/skyrimvr/v0.21/masterlist.yaml
+        dest-filename: SkyrimVR_masterlist.yaml
+        sha256: 8282487953a476fdf628710154db908468dc16afa005cc5fb4cf3ab69695d2dc
+      - type: file
+        url: https://raw.githubusercontent.com/loot/starfield/v0.21/masterlist.yaml
+        dest-filename: Starfield_masterlist.yaml
+        sha256: 8511b43e0131774da230f6d933b4a6a4697482de8084a5ae9dc4fdb18a896fb7
+    cleanup:
+      - /share/wrye_bash/bash/tests
+      - /share/wrye_bash/bash/l10n/*.po
+      - /share/wrye_bash/bash/l10n/template.pot
+      - /share/wrye_bash/bash/compiled

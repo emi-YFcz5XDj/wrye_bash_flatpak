@@ -1,0 +1,16 @@
+name: python3-maturin
+buildsystem: simple
+build-options:
+  append-path: /usr/lib/sdk/rust-stable/bin
+  env:
+    CARGO_HOME: /run/build/python3-maturin/cargo
+build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "maturin" --no-build-isolation
+sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/34/bc/c7df50a359c3a31490785c77d1ddd5fc83cc8cc07a4eddd289dbae53545a/maturin-1.8.6.tar.gz
+    sha256: 0e0dc2e0bfaa2e1bd238e0236cf8a2b7e2250ccaa29c1aa8d0e61fa664b0289d
+  - cargo-maturin.yaml
+cleanup:
+  - '*'

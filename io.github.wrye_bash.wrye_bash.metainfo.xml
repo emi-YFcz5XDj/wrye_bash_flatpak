@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+	<id>io.github.wrye_bash.wrye_bash</id>
+	<metadata_license>FSFAP</metadata_license>
+	<project_license>GPL-3.0-or-later</project_license>
+	<name>Wrye Bash</name>
+	<developer id="io.github.wrye_bash">
+		<name>The Wrye Bash Contributors</name>
+	</developer>
+	<summary>A swiss army knife for modding Bethesda games</summary>
+	<url type="homepage">https://wrye-bash.github.io</url>
+	<url type="help">https://wrye-bash.github.io/docs/Wrye%20Bash%20General%20Readme.html</url>
+	<description>
+		<p>
+			Wrye Bash is a mod management utility for games based on 
+			Bethesda&apos;s Creation Engine, with a rich set of 
+			features. This is a fork of the Wrye Bash related code 
+			from the SVN 3177 trunk revision. We are in the process 
+			of refactoring the code to eventually support more games, 
+			offering the same feature set for all of them. Please see 
+			our Contributing.md if interested in contributing.
+		</p>
+		<p> #### Supported Games </p>
+		<p>
+			Here is a list of supported games with the minimal patch 
+			version that Bash was tested on (previous versions or 
+			latest versions may or may not work):
+		</p>
+		<ul>
+			<li> Enderal (patch 1.6.4.0) </li>
+			<li> Enderal: Special Edition (patch 2.0.12.4) </li>
+			<li> Fallout 3 (patch 1.7.0.3) </li>
+			<li> Fallout 4 (patch 1.10.163.0) </li>
+			<li> Fallout 4 VR (patch 1.2.72.0) </li>
+			<li> Fallout New Vegas (patch 1.4.0.525) </li>
+			<li> Morrowind (very early support, patch 1.6.1820.0) </li>
+			<li> Nehrim (patch 2.0.2.4) </li>
+			<li> Oblivion (patch 1.2.0.416) </li>
+			<li> Skyrim (patch 1.9.36.0) </li>
+			<li> Skyrim Special Edition (patch 1.6.1130.0) </li>
+			<li> Skyrim VR (patch 1.4.15.0) </li>
+			<li> Starfield (patch 1.7.23.0) </li>
+		</ul>
+	</description>
+	<content_rating type="oars-1.1"/>
+	<launchable type="desktop-id">io.github.wrye_bash.wrye_bash.desktop</launchable>
+	<screenshots>
+		<screenshot type="default">
+			<image>https://wrye-bash.github.io/bash/images/readme/installers-8.png</image>
+		</screenshot>
+		<screenshot>
+			<image>https://wrye-bash.github.io/bash/images/readme/mods-3.png</image>
+		</screenshot>
+		<screenshot>
+			<image>https://wrye-bash.github.io/bash/images/readme/ini-oblivion.png</image>
+		</screenshot>
+	</screenshots>
+	<releases>
+		<release version="314" date="2025-04-05">
+			<description>
+				<p>314 Mini-Release for MO2 [2025/04/05] [Various community members]</p>
+				<ul>
+					<li>#697: Clean Data fails with an error when moving files [Utumno]</li>
+					<li>#694: Wrye Bash fails to extract faces from saves in Oblivion [Utumno]</li>
+					<li>#689: Work around MO2's VFS breaking newer versions of WB [Infernio]</li>
+					<li>#580: Improve handling of renames, fix bugs [Utumno]</li>
+				</ul>
+			</description>
+		</release>
+	</releases>
+</component>

@@ -1,0 +1,109 @@
+# Generated with flatpak-pip-generator --yaml -r requirements.txt
+build-commands: []
+buildsystem: simple
+modules:
+- name: python3-chardet
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "chardet==5.2.0" --no-build-isolation
+  sources:
+  - &id001
+    type: file
+    url: https://files.pythonhosted.org/packages/38/6f/f5fbc992a329ee4e0f288c1fe0e2ad9485ed064cac731ed2fe47dcc38cbf/chardet-5.2.0-py3-none-any.whl
+    sha256: e1cf59446890a00105fe7b7912492ea04b6e6f06d4b742b2c788469e34c82970
+- name: python3-lz4
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "lz4==4.3.3" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/a4/31/ec1259ca8ad11568abaf090a7da719616ca96b60d097ccc5799cd0ff599c/lz4-4.3.3.tar.gz
+    sha256: 01fe674ef2889dbb9899d8a67361e0c4a2c833af5aeb37dd505727cf5d2a131e
+- name: python3-PyYAML
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "PyYAML==6.0.2" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/54/ed/79a089b6be93607fa5cdaedf301d7dfb23af5f25c398d5ead2525b063e17/pyyaml-6.0.2.tar.gz
+    sha256: d584d9ec91ad65861cc08d42e834324ef890a082e591037abe114850ff7bbc3e
+- name: python3-vdf
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "vdf==3.4" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/96/60/6456b687cf55cf60020dcd01f9bc51561c3cc84f05fd8e0feb71ce60f894/vdf-3.4-py2.py3-none-any.whl
+    sha256: 68c1a125cc49e343d535af2dd25074e9cb0908c6607f073947c4a04bbe234534
+- name: python3-wxPython
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "wxPython==4.2.2" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/a4/f5/8c272764770f47fd419cc2eff4c4fa1c0681c71bcc2f3158b3a83d1339ff/wxPython-4.2.2.tar.gz
+    sha256: 5dbcb0650f67fdc2c5965795a255ffaa3d7b09fb149aa8da2d0d9aa44e38e2ba
+- name: python3-lxml
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "lxml>=5.3.0" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/76/3d/14e82fc7c8fb1b7761f7e748fd47e2ec8276d137b6acfe5a4bb73853e08f/lxml-5.4.0.tar.gz
+    sha256: d12832e1dbea4be280b22fd0ea7c9b87f0d8fc51ba06e92dc62d52f804f78ebd
+- name: python3-packaging
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "packaging>=24.2" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/20/12/38679034af332785aac8774540895e234f4d07f7545804097de4b666afd8/packaging-25.0-py3-none-any.whl
+    sha256: 29572ef2b1f17581046b3a2227d5c611fb25ec70ca1ba8554b24b0e69331a484
+- name: python3-requests
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "requests[use_chardet_on_py3]==2.32.3" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/4a/7e/3db2bd1b1f9e95f7cddca6d6e75e2f2bd9f51b1246e546d88addca0106bd/certifi-2025.4.26-py3-none-any.whl
+    sha256: 30350364dfe371162649852c63336a15c70c6510c2ad5015b21c2345311805f3
+  - *id001
+  - type: file
+    url: https://files.pythonhosted.org/packages/e4/33/89c2ced2b67d1c2a61c19c6751aa8902d46ce3dacb23600a283619f5a12d/charset_normalizer-3.4.2.tar.gz
+    sha256: 5baececa9ecba31eff645232d59845c07aa030f0c81ee70184a90d35099a0e63
+  - type: file
+    url: https://files.pythonhosted.org/packages/76/c6/c88e154df9c4e1a2a66ccf0005a88dfb2650c1dffb6f5ce603dfbd452ce3/idna-3.10-py3-none-any.whl
+    sha256: 946d195a0d259cbba61165e88e65941f16e9b36ea6ddb97f00452bae8b1287d3
+  - type: file
+    url: https://files.pythonhosted.org/packages/f9/9b/335f9764261e915ed497fcdeb11df5dfd6f7bf257d4a6a2a686d80da4d54/requests-2.32.3-py3-none-any.whl
+    sha256: 70761cfe03c773ceb22aa2f671b4757976145175cdfca038c02654d061d6dcc6
+  - type: file
+    url: https://files.pythonhosted.org/packages/6b/11/cc635220681e93a0183390e26485430ca2c7b5f9d33b15c74c2861cb8091/urllib3-2.4.0-py3-none-any.whl
+    sha256: 4e16665048960a0900c702d4a66415956a584919c03361cac9f1df5c5dd7e813
+- name: python3-send2trash
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "send2trash==1.8.3" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/40/b0/4562db6223154aa4e22f939003cb92514c79f3d4dccca3444253fd17f902/Send2Trash-1.8.3-py3-none-any.whl
+    sha256: 0c31227e0bd08961c7665474a3d1ef7193929fedda4233843689baa056be46c9
+- name: python3-websocket-client
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "websocket-client==1.8.0" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/5a/84/44687a29792a70e111c5c477230a72c4b957d88d16141199bf9acb7537a3/websocket_client-1.8.0-py3-none-any.whl
+    sha256: 17b44cc997f5c498e809b22cdf2d9c7a9e71c02c8cc2b6c56e7c2d1239bfa526
+name: python3-requirements
