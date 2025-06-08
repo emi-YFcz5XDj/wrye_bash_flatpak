@@ -1,11 +1,11 @@
-id: io.github.wrye_bash.wrye_bash
+id: io.github.wrye_bash.wrye-bash
 runtime: org.gnome.Platform
 runtime-version: '48'
 sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm20
   - org.freedesktop.Sdk.Extension.rust-stable
-command: wrye_bash
+command: wrye-bash
 finish-args:
   - --share=ipc
   - --socket=x11
@@ -54,12 +54,12 @@ modules:
   - python3-pymupdf.yaml
   - python3-requirements.yaml
 
-  - name: wrye_bash
+  - name: wrye-bash
     buildsystem: simple
     build-commands:
-      - install -Dm755 io.github.wrye_bash.wrye_bash.sh "${FLATPAK_DEST}"/bin/wrye_bash
-      - install -Dm644 io.github.wrye_bash.wrye_bash.desktop -t "${FLATPAK_DEST}"/share/applications
-      - install -Dm644 Mopy/bash/images/bash.svg "${FLATPAK_DEST}"/share/icons/hicolor/scalable/apps/io.github.wrye_bash.wrye_bash.svg
+      - install -Dm755 io.github.wrye_bash.wrye-bash.sh "${FLATPAK_DEST}"/bin/wrye-bash
+      - install -Dm644 io.github.wrye_bash.wrye-bash.desktop -t "${FLATPAK_DEST}"/share/applications
+      - install -Dm644 Mopy/bash/images/bash.svg "${FLATPAK_DEST}"/share/icons/hicolor/scalable/apps/io.github.wrye_bash.wrye-bash.svg
 
       - patch -Np1 -i 0001_write_BashBugDump_to_flatpak_data.patch
       - patch -Np1 -i 0002_detect_flatpak_steam.patch
@@ -72,17 +72,17 @@ modules:
         mkdir -p Mopy/taglists/"$game_name";
         cp -a "$game_name"_masterlist.yaml Mopy/taglists/"$game_name"/taglist.yaml; done
 
-      - cp -a Mopy/ "${FLATPAK_DEST}"/share/wrye_bash/
-      - install -Dm644 LICENSE.md "${FLATPAK_DEST}"/share/licenses/wrye_bash/LICENSE.md
-      - install -Dm644 Mopy/LICENSE-THIRD-PARTY "${FLATPAK_DEST}"/share/licenses/wrye_bash/LICENSE-THIRD-PARTY
+      - cp -a Mopy/ "${FLATPAK_DEST}"/share/wrye-bash/
+      - install -Dm644 LICENSE.md "${FLATPAK_DEST}"/share/licenses/wrye-bash/LICENSE.md
+      - install -Dm644 Mopy/LICENSE-THIRD-PARTY "${FLATPAK_DEST}"/share/licenses/wrye-bash/LICENSE-THIRD-PARTY
     sources:
       - type: archive
         url: https://github.com/wrye-bash/wrye-bash/archive/refs/tags/v314.tar.gz
         sha256: 663c1d1043483bcfbc0ccfb60b571be7b8bbc6670e93821035ad846cca106f8c
       - type: file
-        path: io.github.wrye_bash.wrye_bash.sh
+        path: io.github.wrye_bash.wrye-bash.sh
       - type: file
-        path: io.github.wrye_bash.wrye_bash.desktop
+        path: io.github.wrye_bash.wrye-bash.desktop
       - type: file
         path: 0001_write_BashBugDump_to_flatpak_data.patch
       - type: file
@@ -134,8 +134,8 @@ modules:
         dest-filename: Starfield_masterlist.yaml
         sha256: 8511b43e0131774da230f6d933b4a6a4697482de8084a5ae9dc4fdb18a896fb7
     cleanup:
-      - /share/wrye_bash/bash/tests
-      - /share/wrye_bash/bash/l10n/*.po
-      - /share/wrye_bash/bash/l10n/template.pot
-      - /share/wrye_bash/bash/compiled
-      - /share/wrye_bash/LICENSE-THIRD-PARTY
+      - /share/wrye-bash/bash/tests
+      - /share/wrye-bash/bash/l10n/*.po
+      - /share/wrye-bash/bash/l10n/template.pot
+      - /share/wrye-bash/bash/compiled
+      - /share/wrye-bash/LICENSE-THIRD-PARTY

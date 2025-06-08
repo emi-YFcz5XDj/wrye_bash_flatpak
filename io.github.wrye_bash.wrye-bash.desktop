@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=Wrye Bash
 Comment=A swiss army knife for modding Bethesda games
-Exec=wrye_bash %F
-Icon=io.github.wrye_bash.wrye_bash
+Exec=wrye-bash %F
+Icon=io.github.wrye_bash.wrye-bash
 Terminal=false
 Type=Application
 StartupNotify=true
-StartupWMClass=wrye_bash
+StartupWMClass=wrye-bash
 Categories=Utility;FileTools;X-ModManager;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-	<id>io.github.wrye_bash.wrye_bash</id>
+	<id>io.github.wrye_bash.wrye-bash</id>
 	<metadata_license>FSFAP</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
 	<name>Wrye Bash</name>
@@ -43,7 +43,7 @@
 		</ul>
 	</description>
 	<content_rating type="oars-1.1"/>
-	<launchable type="desktop-id">io.github.wrye_bash.wrye_bash.desktop</launchable>
+	<launchable type="desktop-id">io.github.wrye_bash.wrye-bash.desktop</launchable>
 	<screenshots>
 		<screenshot type="default">
 			<image>https://wrye-bash.github.io/bash/images/readme/installers-8.png</image>

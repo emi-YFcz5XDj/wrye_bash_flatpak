@@ -1,5 +1,5 @@
 #!/usr/bin/env fish
-if not test -r io.github.wrye_bash.wrye_bash.yaml
+if not test -r io.github.wrye_bash.wrye-bash.yaml
 	echo "Not in source directory!"
 	exit 1
 end
