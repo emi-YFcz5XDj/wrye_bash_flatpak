@@ -2,5 +2,8 @@ build/**
 .flatpak-builder
 repo/**
 **.flatpak
+
+.vscode
+
 taglists/**
 cargo-*.lock
