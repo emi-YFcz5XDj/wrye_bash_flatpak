@@ -37,7 +37,7 @@ function gen_taglists
 		set -l checksum (curl -sLo - "$url" | sha256sum)
 		set -fa output (
 			podman run --rm --security-opt=no-new-privileges --cap-drop all --network none \
-			-e url="$url" -e dest_file="$dest_file" -e checksum="$checksum" docker.io/mikefarah/yq eval -n \
+				-e url="$url" -e dest_file="$dest_file" -e checksum="$checksum" docker.io/mikefarah/yq eval -n \
 				'[ .type = "file" | .url = env(url) | .dest-filename = env(dest_file) | .sha256 = env(checksum) ]' |
 			string collect -N 
 		)
