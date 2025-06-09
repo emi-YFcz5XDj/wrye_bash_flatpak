@@ -42,7 +42,7 @@ function gen_taglists
 			string collect -N 
 		)
 	end
-	echo $output | string replace -r '^ -' '-' > taglists.yaml # Workaround fish append behaviour
+	echo $output | string replace -r '^ -' '-' | string replace -r '  -$' '' > taglists.yaml # Workaround strange fish behaviour
 end
 
 gen_requirements
