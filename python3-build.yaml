@@ -1,4 +1,4 @@
-# Generated with flatpak-pip-generator --yaml --build-only setuptools_rust
+# Generated with flatpak-pip-generator --yaml -o python3-build setuptools_rust
 name: python3-setuptools_rust
 buildsystem: simple
 build-commands:
@@ -11,5 +11,3 @@ sources:
 - type: file
   url: https://files.pythonhosted.org/packages/b3/01/37e1376f80578882e4f2d451f57d1fb42a599832057a123f57d9f26395c8/setuptools_rust-1.11.1-py3-none-any.whl
   sha256: 5eaaddaed268dc24a527ffa659ce56b22d3cf17b781247b779efd611031fe8ea
-cleanup:
-- '*'
