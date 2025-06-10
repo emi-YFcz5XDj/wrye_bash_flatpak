@@ -5,6 +5,7 @@
 - [x] Resolve Wayland failed to create GBM buffer issue
 - [x] Resolve `xdg-open` not found issue
 - [x] Write a script that updates LOOT taglists automatically
+- [ ] Fix backup crash
 - [ ] Read bash.ini from `.var`
 - [ ] Improve game detection
 - [ ] Consider enabling menu bar
