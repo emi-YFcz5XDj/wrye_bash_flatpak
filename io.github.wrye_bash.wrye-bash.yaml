@@ -9,8 +9,10 @@ command: wrye-bash
 finish-args:
   - --share=ipc
   - --socket=x11
+  - --socket=wayland
   - --socket=pulseaudio
   - --device=dri
+  - --env=WEBKIT_DISABLE_DMABUF_RENDERER=1 # Workaround NVIDIA bug https://bugs.webkit.org/show_bug.cgi?id=259644
   - --filesystem=home/.var/app/com.valvesoftware.Steam/data/Steam:rw
   - --filesystem=xdg-data/Steam:rw
   - --filesystem=home/.steam/root:rw
@@ -81,9 +83,9 @@ modules:
       - install -Dm644 LICENSE.md "$FLATPAK_DEST"/share/licenses/wrye-bash/LICENSE.md
       - install -Dm644 Mopy/LICENSE-THIRD-PARTY "$FLATPAK_DEST"/share/licenses/wrye-bash/LICENSE-THIRD-PARTY
     sources:
-      - type: archive
-        url: https://github.com/wrye-bash/wrye-bash/archive/refs/tags/v314.tar.gz
-        sha256: 663c1d1043483bcfbc0ccfb60b571be7b8bbc6670e93821035ad846cca106f8c
+      - type: git
+        url: https://github.com/wrye-bash/wrye-bash.git
+        commit: caff36c93c8a4db0b6385324d316a7a8c722e755
       - type: file
         path: io.github.wrye_bash.wrye-bash.sh
       - type: file
