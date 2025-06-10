@@ -22,9 +22,15 @@ modules:
     build-options:
       strip: true
     build-commands:
-      - install -Dm755 /usr/bin/strings -t ${FLATPAK_DEST}/bin/
-      - install -Dm755 /usr/lib/$(gcc -print-multiarch)/libbfd-*.so -t ${FLATPAK_DEST}/lib/
-      - install -Dm755 /usr/lib/$(gcc -print-multiarch)/libsframe.so* -t ${FLATPAK_DEST}/lib/
+      - install -Dm755 /usr/bin/strings -t "$FLATPAK_DEST"/bin/
+      - install -Dm755 /usr/lib/$(gcc -print-multiarch)/libbfd-*.so -t "$FLATPAK_DEST"/lib/
+      - install -Dm755 /usr/lib/$(gcc -print-multiarch)/libsframe.so* -t "$FLATPAK_DEST"/lib/
+  - name: xdg_open # Workaround Wrye Bash subprocess.call bug
+    buildsystem: simple
+    build-options:
+      strip: true
+    build-commands:
+      - install -Dm755 /usr/bin/xdg-open -t "$FLATPAK_DEST"/bin
   - python3-reflink.yaml
   - python3-pymupdf.yaml
   - python3-requirements.yaml
@@ -56,9 +62,9 @@ modules:
   - name: wrye-bash
     buildsystem: simple
     build-commands:
-      - install -Dm755 io.github.wrye_bash.wrye-bash.sh "${FLATPAK_DEST}"/bin/wrye-bash
-      - install -Dm644 io.github.wrye_bash.wrye-bash.desktop -t "${FLATPAK_DEST}"/share/applications
-      - install -Dm644 Mopy/bash/images/bash.svg "${FLATPAK_DEST}"/share/icons/hicolor/scalable/apps/io.github.wrye_bash.wrye-bash.svg
+      - install -Dm755 io.github.wrye_bash.wrye-bash.sh "$FLATPAK_DEST"/bin/wrye-bash
+      - install -Dm644 io.github.wrye_bash.wrye-bash.desktop -t "$FLATPAK_DEST"/share/applications
+      - install -Dm644 Mopy/bash/images/bash.svg "$FLATPAK_DEST"/share/icons/hicolor/scalable/apps/io.github.wrye_bash.wrye-bash.svg
 
       - patch -Np1 -i 0001_write_BashBugDump_to_flatpak_data.patch
       - patch -Np1 -i 0002_detect_flatpak_steam.patch
@@ -71,9 +77,9 @@ modules:
         mkdir -p Mopy/taglists/"$game_name";
         cp -a "$game_name"_masterlist.yaml Mopy/taglists/"$game_name"/taglist.yaml; done
 
-      - cp -a Mopy/ "${FLATPAK_DEST}"/share/wrye-bash/
-      - install -Dm644 LICENSE.md "${FLATPAK_DEST}"/share/licenses/wrye-bash/LICENSE.md
-      - install -Dm644 Mopy/LICENSE-THIRD-PARTY "${FLATPAK_DEST}"/share/licenses/wrye-bash/LICENSE-THIRD-PARTY
+      - cp -a Mopy/ "$FLATPAK_DEST"/share/wrye-bash/
+      - install -Dm644 LICENSE.md "$FLATPAK_DEST"/share/licenses/wrye-bash/LICENSE.md
+      - install -Dm644 Mopy/LICENSE-THIRD-PARTY "$FLATPAK_DEST"/share/licenses/wrye-bash/LICENSE-THIRD-PARTY
     sources:
       - type: archive
         url: https://github.com/wrye-bash/wrye-bash/archive/refs/tags/v314.tar.gz
