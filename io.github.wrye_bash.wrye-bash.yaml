@@ -19,6 +19,22 @@ finish-args:
 modules:
   - python3-pre.yaml
 
+  - name: p7zip
+    buildsystem: autotools
+    no-autogen: true
+    make-args:
+      - 7z
+    make-install-args:
+      - DEST_HOME=/app
+    sources:
+      - type: archive
+        url: https://github.com/p7zip-project/p7zip/archive/refs/tags/v17.05.tar.gz
+        sha256: d2788f892571058c08d27095c22154579dfefb807ebe357d145ab2ddddefb1a6
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/p7zip-project/p7zip/releases/latest
+          version-query: .tag_name
+          url-query: '"https://github.com/p7zip-project/p7zip/archive/refs/tags/\($version).tar.gz"'
   - name: binutils_strings
     buildsystem: simple
     build-options:
@@ -67,10 +83,13 @@ modules:
       - install -Dm755 io.github.wrye_bash.wrye-bash.sh "$FLATPAK_DEST"/bin/wrye-bash
       - install -Dm644 io.github.wrye_bash.wrye-bash.desktop -t "$FLATPAK_DEST"/share/applications
       - install -Dm644 Mopy/bash/images/bash.svg "$FLATPAK_DEST"/share/icons/hicolor/scalable/apps/io.github.wrye_bash.wrye-bash.svg
+      - install -Dm644 boot-settings_default.toml "$FLATPAK_DEST"/share/wrye-bash/boot-settings_default.toml
 
       - patch -Np1 -i 0001_write_BashBugDump_to_flatpak_data.patch
       - patch -Np1 -i 0002_detect_flatpak_steam.patch
       - patch -Np1 -i 0003_change_game_not_found_dialog.patch
+      - patch -Np1 -i 0004_read_bash_ini_from_xdg_data_home.patch
+      - patch -Np1 -i 0005_change_backup_files.patch
 
       - python scripts/compile_l10n.py
       - python -O -m compileall Mopy/bash
@@ -79,7 +98,7 @@ modules:
         mkdir -p Mopy/taglists/"$game_name";
         cp -a "$game_name"_masterlist.yaml Mopy/taglists/"$game_name"/taglist.yaml; done
 
-      - cp -a Mopy/ "$FLATPAK_DEST"/share/wrye-bash/
+      - cp -a Mopy/* "$FLATPAK_DEST"/share/wrye-bash/
       - install -Dm644 LICENSE.md "$FLATPAK_DEST"/share/licenses/wrye-bash/LICENSE.md
       - install -Dm644 Mopy/LICENSE-THIRD-PARTY "$FLATPAK_DEST"/share/licenses/wrye-bash/LICENSE-THIRD-PARTY
     sources:
@@ -91,11 +110,17 @@ modules:
       - type: file
         path: io.github.wrye_bash.wrye-bash.desktop
       - type: file
+        path: boot-settings_default.toml
+      - type: file
         path: 0001_write_BashBugDump_to_flatpak_data.patch
       - type: file
         path: 0002_detect_flatpak_steam.patch
       - type: file
         path: 0003_change_game_not_found_dialog.patch
+      - type: file
+        path: 0004_read_bash_ini_from_xdg_data_home.patch
+      - type: file
+        path: 0005_change_backup_files.patch
       - taglists.yaml
     cleanup:
       - /share/wrye-bash/bash/tests

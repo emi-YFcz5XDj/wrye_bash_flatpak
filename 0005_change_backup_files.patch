@@ -1,0 +1,23 @@
+diff --git a/Mopy/bash/barb.py b/Mopy/bash/barb.py
+index c582c65c7..1daa9054c 100644
+--- a/Mopy/bash/barb.py
++++ b/Mopy/bash/barb.py
+@@ -61,7 +61,6 @@ def _init_settings_files(bak_name, mg_name, root_prefix, mods_folder):
+     if not initialization.bash_dirs_initialized:
+         raise BoltError(u'_init_settings_files: Bash dirs are not initialized')
+     settings_info = {
+-        (dirs[u'mopy'], jo(bak_name, u'Mopy')): {u'bash.ini', },
+         (dirs[u'mods'].join(u'Bash'), jo(bak_name, mods_folder, u'Bash')): {
+             u'Table.dat', },
+         (dirs[u'mods'].join(u'Docs'), jo(bak_name, mods_folder, u'Docs')): {
+@@ -78,9 +77,8 @@ def _init_settings_files(bak_name, mg_name, root_prefix, mods_folder):
+            u'Converters.dat', u'Installers.dat', },
+         (dirs[u'saveBase'], jo(u'My Games', mg_name)): {
+             u'BashProfiles.dat', u'BashSettings.dat', u'BashLoadOrders.dat'},
+-        # backup all files in Mopy\bash\l10n, Data\Bash Patches\,
++        # backup all files in Data\Bash Patches\,
+         # Data\BashTags\ and Data\INI Tweaks\
+-        (dirs[u'l10n'], jo(bak_name, u'Mopy', u'bash', u'l10n')): {},
+         (dirs[u'mods'].join(u'Bash Patches'),
+          jo(bak_name, mods_folder, u'Bash Patches')): {},
+         (dirs[u'mods'].join(u'BashTags'),
