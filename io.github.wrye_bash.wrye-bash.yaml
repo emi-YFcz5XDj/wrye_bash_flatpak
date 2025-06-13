@@ -12,9 +12,7 @@ finish-args:
   - --socket=wayland
   - --socket=pulseaudio
   - --device=dri
-  - --env=WEBKIT_DISABLE_DMABUF_RENDERER=1 # Workaround NVIDIA bug https://bugs.webkit.org/show_bug.cgi?id=259644
   - --filesystem=home/.var/app/com.valvesoftware.Steam/data/Steam:rw
-  - --filesystem=xdg-data/Steam:rw
   - --filesystem=home/.steam/root:rw
 modules:
   - python3-pre.yaml
@@ -85,10 +83,10 @@ modules:
       - install -Dm644 Mopy/bash/images/bash.svg "$FLATPAK_DEST"/share/icons/hicolor/scalable/apps/io.github.wrye_bash.wrye-bash.svg
       - install -Dm644 boot-settings_default.toml "$FLATPAK_DEST"/share/wrye-bash/boot-settings_default.toml
 
-      - patch -Np1 -i 0001_write_BashBugDump_to_flatpak_data.patch
+      - patch -Np1 -i 0001_write_BashBugDump_to_xdg_data_home.patch
       - patch -Np1 -i 0002_detect_flatpak_steam.patch
       - patch -Np1 -i 0003_change_game_not_found_dialog.patch
-      - patch -Np1 -i 0004_read_bash_ini_from_xdg_data_home.patch
+      - patch -Np1 -i 0004_read_bash_ini_from_xdg_config_home.patch
       - patch -Np1 -i 0005_change_backup_files.patch
 
       - python scripts/compile_l10n.py
@@ -112,13 +110,13 @@ modules:
       - type: file
         path: boot-settings_default.toml
       - type: file
-        path: 0001_write_BashBugDump_to_flatpak_data.patch
+        path: 0001_write_BashBugDump_to_xdg_data_home.patch
       - type: file
         path: 0002_detect_flatpak_steam.patch
       - type: file
         path: 0003_change_game_not_found_dialog.patch
       - type: file
-        path: 0004_read_bash_ini_from_xdg_data_home.patch
+        path: 0004_read_bash_ini_from_xdg_config_home.patch
       - type: file
         path: 0005_change_backup_files.patch
       - taglists.yaml
