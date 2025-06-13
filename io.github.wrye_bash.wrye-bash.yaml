@@ -7,11 +7,10 @@ sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-stable
 command: wrye-bash
 finish-args:
-  - --share=ipc
+  - --share=ipc # Used by X11
   - --socket=x11
   - --socket=wayland
-  - --socket=pulseaudio
-  - --device=dri
+  - --device=dri # Used by WebKit
   - --filesystem=home/.var/app/com.valvesoftware.Steam/data/Steam:rw
   - --filesystem=home/.steam/root:rw
 modules:
