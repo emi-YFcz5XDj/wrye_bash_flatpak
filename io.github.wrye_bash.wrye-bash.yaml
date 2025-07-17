@@ -28,10 +28,9 @@ modules:
         url: https://github.com/p7zip-project/p7zip/archive/refs/tags/v17.05.tar.gz
         sha256: d2788f892571058c08d27095c22154579dfefb807ebe357d145ab2ddddefb1a6
         x-checker-data:
-          type: json
-          url: https://api.github.com/repos/p7zip-project/p7zip/releases/latest
-          version-query: .tag_name
-          url-query: '"https://github.com/p7zip-project/p7zip/archive/refs/tags/\($version).tar.gz"'
+          type: anitya
+          project-id: 2583
+          url-template: https://github.com/p7zip-project/p7zip/archive/refs/tags/v$version.tar.gz
   - name: binutils_strings
     buildsystem: simple
     build-options:
@@ -61,8 +60,8 @@ modules:
       - -DBUILD_CLI=OFF
     sources:
       - type: archive
-        url: https://github.com/libgit2/libgit2/archive/refs/tags/v1.9.0.tar.gz
-        sha256: 75b27d4d6df44bd34e2f70663cfd998f5ec41e680e1e593238bbe517a84c7ed2
+        url: https://github.com/libgit2/libgit2/archive/refs/tags/v1.9.1.tar.gz
+        sha256: 14cab3014b2b7ad75970ff4548e83615f74d719afe00aa479b4a889c1e13fc00
         x-checker-data:
           type: anitya
           project-id: 1627
