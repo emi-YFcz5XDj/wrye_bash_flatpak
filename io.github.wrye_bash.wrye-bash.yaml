@@ -86,6 +86,7 @@ modules:
       - patch -Np1 -i 0003_change_game_not_found_dialog.patch
       - patch -Np1 -i 0004_read_bash_ini_from_xdg_config_home.patch
       - patch -Np1 -i 0005_change_backup_files.patch
+      - patch -Np1 -i 0006_disable_update_checking.patch
 
       - python scripts/compile_l10n.py
       - python -O -m compileall Mopy/bash
@@ -117,6 +118,8 @@ modules:
         path: 0004_read_bash_ini_from_xdg_config_home.patch
       - type: file
         path: 0005_change_backup_files.patch
+      - type: file
+        path: 0006_disable_update_checking.patch
       - taglists.yaml
     cleanup:
       - /share/wrye-bash/bash/tests
