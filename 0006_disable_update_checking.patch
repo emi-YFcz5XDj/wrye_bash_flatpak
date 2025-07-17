@@ -1,0 +1,13 @@
+diff --git a/Mopy/bash/basher/constants.py b/Mopy/bash/basher/constants.py
+index 1ece1de93..d762934d2 100644
+--- a/Mopy/bash/basher/constants.py
++++ b/Mopy/bash/basher/constants.py
+@@ -237,7 +237,7 @@
+     'bash.temp_dir': '',
+     'bash.window.sizes': {},
+     #--Update Check on Boot
+-    'bash.update_check.enabled': True,
++    'bash.update_check.enabled': False,
+     'bash.update_check.cooldown': 1,
+     'bash.update_check.last_checked': 0,
+     #--Appearance
