@@ -101,7 +101,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/wrye-bash/wrye-bash.git
-        commit: caff36c93c8a4db0b6385324d316a7a8c722e755
+        commit: cc1aa90809182f45c24f2600dbc02f68a9c20d25
       - type: file
         path: io.github.wrye_bash.wrye-bash.sh
       - type: file

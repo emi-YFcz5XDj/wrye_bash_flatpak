@@ -1,8 +1,8 @@
 diff --git a/Mopy/bash/bash.py b/Mopy/bash/bash.py
-index 0aca111b3..c195489d2 100644
+index fa3665ffc..4d4f998d0 100644
 --- a/Mopy/bash/bash.py
 +++ b/Mopy/bash/bash.py
-@@ -723,12 +723,13 @@ def _import_bush_and_set_game(opts):
+@@ -720,12 +720,13 @@ def _import_bush_and_set_game(opts):
          if len(game_infos) == 0:
              _show_boot_popup(_(
                  'Wrye Bash could not find a game to manage. Make sure to '
@@ -23,7 +23,7 @@ index 0aca111b3..c195489d2 100644
              return None
          retCode = _select_game_popup(game_infos,
 diff --git a/Mopy/bash/l10n/de_DE.po b/Mopy/bash/l10n/de_DE.po
-index 9b067c24b..8201f45a4 100644
+index 7484fd07d..d7327271e 100644
 --- a/Mopy/bash/l10n/de_DE.po
 +++ b/Mopy/bash/l10n/de_DE.po
 @@ -608,13 +608,13 @@ msgid "Unable to create backup!"
@@ -45,7 +45,7 @@ index 9b067c24b..8201f45a4 100644
  #: Mopy/bash/bash.py:744
  msgid "The following (non-critical) warnings were found during initialization:"
 diff --git a/Mopy/bash/l10n/it_IT.po b/Mopy/bash/l10n/it_IT.po
-index 9c480d095..f6384ded0 100644
+index 40348ec1b..01111f58c 100644
 --- a/Mopy/bash/l10n/it_IT.po
 +++ b/Mopy/bash/l10n/it_IT.po
 @@ -607,12 +607,12 @@ msgid "Unable to create backup!"
@@ -64,7 +64,7 @@ index 9c480d095..f6384ded0 100644
  
  #: Mopy/bash/bash.py:744
 diff --git a/Mopy/bash/l10n/ja_JP.po b/Mopy/bash/l10n/ja_JP.po
-index 5054e2a89..f1cb5fba6 100644
+index fe2c9de30..5b2eaa62b 100644
 --- a/Mopy/bash/l10n/ja_JP.po
 +++ b/Mopy/bash/l10n/ja_JP.po
 @@ -607,12 +607,12 @@ msgid "Unable to create backup!"
@@ -83,7 +83,7 @@ index 5054e2a89..f1cb5fba6 100644
  
  #: Mopy/bash/bash.py:744
 diff --git a/Mopy/bash/l10n/pt_BR.po b/Mopy/bash/l10n/pt_BR.po
-index 72f29ee17..314af33d9 100644
+index 98ad68044..f45542dba 100644
 --- a/Mopy/bash/l10n/pt_BR.po
 +++ b/Mopy/bash/l10n/pt_BR.po
 @@ -609,13 +609,13 @@ msgid "Unable to create backup!"
@@ -105,7 +105,7 @@ index 72f29ee17..314af33d9 100644
  #: Mopy/bash/bash.py:744
  msgid "The following (non-critical) warnings were found during initialization:"
 diff --git a/Mopy/bash/l10n/ru_RU.po b/Mopy/bash/l10n/ru_RU.po
-index 7e66b604a..521fed16d 100644
+index 484ee1da9..9ac83dd59 100644
 --- a/Mopy/bash/l10n/ru_RU.po
 +++ b/Mopy/bash/l10n/ru_RU.po
 @@ -613,13 +613,13 @@ msgid "Unable to create backup!"
@@ -127,7 +127,7 @@ index 7e66b604a..521fed16d 100644
  #: Mopy/bash/bash.py:744
  msgid "The following (non-critical) warnings were found during initialization:"
 diff --git a/Mopy/bash/l10n/sv_SE.po b/Mopy/bash/l10n/sv_SE.po
-index b69c96ea3..3cc63fa1b 100644
+index 406cfb9cf..9359f35c6 100644
 --- a/Mopy/bash/l10n/sv_SE.po
 +++ b/Mopy/bash/l10n/sv_SE.po
 @@ -607,12 +607,12 @@ msgid "Unable to create backup!"
@@ -146,7 +146,7 @@ index b69c96ea3..3cc63fa1b 100644
  
  #: Mopy/bash/bash.py:744
 diff --git a/Mopy/bash/l10n/ta.po b/Mopy/bash/l10n/ta.po
-index c0c926ded..41db6b38a 100644
+index 2151218de..b0f9fc937 100644
 --- a/Mopy/bash/l10n/ta.po
 +++ b/Mopy/bash/l10n/ta.po
 @@ -609,13 +609,13 @@ msgid "Unable to create backup!"
@@ -168,7 +168,7 @@ index c0c926ded..41db6b38a 100644
  #: Mopy/bash/bash.py:744
  msgid "The following (non-critical) warnings were found during initialization:"
 diff --git a/Mopy/bash/l10n/template.pot b/Mopy/bash/l10n/template.pot
-index 3e020e2b3..4d394286e 100644
+index c51e74f95..bd86bda03 100644
 --- a/Mopy/bash/l10n/template.pot
 +++ b/Mopy/bash/l10n/template.pot
 @@ -606,12 +606,12 @@ msgid "Unable to create backup!"
@@ -187,7 +187,7 @@ index 3e020e2b3..4d394286e 100644
  
  #: Mopy/bash/bash.py:744
 diff --git a/Mopy/bash/l10n/tr_TR.po b/Mopy/bash/l10n/tr_TR.po
-index 159b1df2b..872b71023 100644
+index 671f374b2..04d8337c7 100644
 --- a/Mopy/bash/l10n/tr_TR.po
 +++ b/Mopy/bash/l10n/tr_TR.po
 @@ -608,13 +608,13 @@ msgid "Unable to create backup!"
@@ -218,7 +218,7 @@ index 159b1df2b..872b71023 100644
  
  #: Mopy/bash/basher/dialogs.py:637
 diff --git a/Mopy/bash/l10n/uk_UA.po b/Mopy/bash/l10n/uk_UA.po
-index 84b0cb175..5a4d3d67b 100644
+index bdcaf0361..e39954b96 100644
 --- a/Mopy/bash/l10n/uk_UA.po
 +++ b/Mopy/bash/l10n/uk_UA.po
 @@ -608,12 +608,12 @@ msgid "Unable to create backup!"
@@ -237,7 +237,7 @@ index 84b0cb175..5a4d3d67b 100644
  
  #: Mopy/bash/bash.py:744
 diff --git a/Mopy/bash/l10n/zh_CN.po b/Mopy/bash/l10n/zh_CN.po
-index 3e06db335..a7390ecd9 100644
+index 0a804de85..760a9e365 100644
 --- a/Mopy/bash/l10n/zh_CN.po
 +++ b/Mopy/bash/l10n/zh_CN.po
 @@ -608,12 +608,12 @@ msgid "Unable to create backup!"
@@ -256,7 +256,7 @@ index 3e06db335..a7390ecd9 100644
  
  #: Mopy/bash/bash.py:744
 diff --git a/Mopy/bash/l10n/zh_TW.po b/Mopy/bash/l10n/zh_TW.po
-index 7bb2ad73e..7dc0ef51b 100644
+index b9d1c360f..5c003d519 100644
 --- a/Mopy/bash/l10n/zh_TW.po
 +++ b/Mopy/bash/l10n/zh_TW.po
 @@ -611,12 +611,12 @@ msgid "Unable to create backup!"
