@@ -2,6 +2,7 @@ build/**
 .flatpak-builder
 repo/**
 **.flatpak
+.buildconfig
 
 .vscode
 
