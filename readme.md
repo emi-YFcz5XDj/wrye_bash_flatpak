@@ -8,4 +8,5 @@
 - [x] Fix backup crash
 - [x] Read bash.ini from `.var`
 - [ ] Improve game detection
-- [ ] Consider enabling menu bar
+- [x] Consider enabling menu bar
+- [ ] Move lock file to xdg data
