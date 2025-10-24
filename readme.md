@@ -10,3 +10,4 @@
 - [ ] Improve game detection
 - [x] Consider enabling menu bar
 - [ ] Move lock file to xdg data
+- [ ] Fix default temporary folder
