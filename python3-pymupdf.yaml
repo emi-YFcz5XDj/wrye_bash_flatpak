@@ -50,13 +50,13 @@ modules:
     buildsystem: autotools
     sources:
       - type: archive
-        url: https://github.com/google/gumbo-parser/archive/v0.10.1.tar.gz
+        url: https://github.com/google/gumbo-parser/archive/refs/tags/v0.10.1.tar.gz
         sha256: 28463053d44a5dfbc4b77bcf49c8cee119338ffa636cc17fc3378421d714efad
         x-checker-data:
           type: anitya
           project-id: 214990
           stable-only: true
-          url-template: https://github.com/google/gumbo-parser/archive/v$version.tar.gz
+          url-template: https://github.com/google/gumbo-parser/archive/refs/tags/v$version.tar.gz
     cleanup:
       - /share/man/man1
       - /lib/pkgconfig

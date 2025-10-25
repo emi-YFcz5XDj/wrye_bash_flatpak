@@ -36,7 +36,7 @@ modules:
           type: anitya
           project-id: 17875
           stable-only: true
-          url-template: https://github.com/ip7z/7zip/archive/refs/tags/v$version.tar.gz
+          url-template: https://github.com/ip7z/7zip/archive/refs/tags/$version.tar.gz
   - name: binutils_strings
     buildsystem: simple
     build-options:
