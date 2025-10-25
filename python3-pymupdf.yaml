@@ -46,17 +46,33 @@ modules:
     cleanup:
       - '*'
 
-  - name: libgumbo
-    buildsystem: autotools
+  - name: googletest
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
     sources:
       - type: archive
-        url: https://github.com/google/gumbo-parser/archive/refs/tags/v0.10.1.tar.gz
-        sha256: 28463053d44a5dfbc4b77bcf49c8cee119338ffa636cc17fc3378421d714efad
+        url: https://github.com/google/googletest/archive/refs/tags/v1.17.0.tar.gz
+        sha256: 65fab701d9829d38cb77c14acdc431d2108bfdbf8979e40eb8ae567edf10b27c
+        x-checker-data:
+          type: anitya
+          project-id: 18290
+          stable-only: true
+          url-template: https://github.com/google/googletest/archive/refs/tags/v$version.tar.gz
+    cleanup:
+      - '*'
+
+  - name: libgumbo
+    buildsystem: meson
+    sources:
+      - type: archive
+        url: https://codeberg.org/gumbo-parser/gumbo-parser/archive/0.13.2.tar.gz
+        sha256: dbdc159dc8e5c6f3f254e50bce689dd9e439064ff06c165d5653410a5714ab66
         x-checker-data:
           type: anitya
           project-id: 214990
           stable-only: true
-          url-template: https://github.com/google/gumbo-parser/archive/refs/tags/v$version.tar.gz
+          url-template: https://codeberg.org/gumbo-parser/gumbo-parser/archive/$version.tar.gz
     cleanup:
       - /share/man/man1
       - /lib/pkgconfig
@@ -84,6 +100,7 @@ modules:
   - name: freeglut
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - -DFREEGLUT_BUILD_STATIC_LIBS=OFF
       - -DFREEGLUT_WAYLAND=ON

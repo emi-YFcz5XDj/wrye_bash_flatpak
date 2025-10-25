@@ -20,14 +20,12 @@ modules:
   # Runtime dependencies
   - name: 7-zip
     buildsystem: simple
+    subdir: CPP/7zip/Bundles/Alone2
     build-commands:
-      - |
-        for bundle in Alone2 SFXCon; do
-          pushd CPP/7zip/Bundles/${bundle}
-          make -j ${FLATPAK_BUILDER_N_JOBS} -f ../../cmpl_gcc.mak
-          popd
-        done
-      - install -Dm755 CPP/7zip/Bundles/Alone2/b/g/7zz   $FLATPAK_DEST/bin/7z
+      - make -j "$FLATPAK_BUILDER_N_JOBS" -f makefile.gcc
+      - install -Dm755 ./_o/7zz -t "$FLATPAK_DEST"/bin
+      - ln -s "$FLATPAK_DEST"/bin/7zz "$FLATPAK_DEST"/bin/7za
+      - ln -s "$FLATPAK_DEST"/bin/7zz "$FLATPAK_DEST"/bin/7z
     sources:
       - type: archive
         url: https://github.com/ip7z/7zip/archive/refs/tags/25.01.tar.gz
