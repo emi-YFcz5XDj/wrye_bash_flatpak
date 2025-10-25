@@ -23,9 +23,9 @@ modules:
     subdir: CPP/7zip/Bundles/Alone2
     build-commands:
       - make -j "$FLATPAK_BUILDER_N_JOBS" -f makefile.gcc
-      - install -Dm755 ./_o/7zz -t "$FLATPAK_DEST"/bin
-      - ln -s "$FLATPAK_DEST"/bin/7zz "$FLATPAK_DEST"/bin/7za
-      - ln -s "$FLATPAK_DEST"/bin/7zz "$FLATPAK_DEST"/bin/7z
+      - install -Dm755 ./_o/7zz -t "${FLATPAK_DEST}/bin"
+      - ln -s "${FLATPAK_DEST}/bin/7zz" "${FLATPAK_DEST}/bin/7za"
+      - ln -s "${FLATPAK_DEST}/bin/7zz" "${FLATPAK_DEST}/bin/7z"
     sources:
       - type: archive
         url: https://github.com/ip7z/7zip/archive/refs/tags/25.01.tar.gz
@@ -40,15 +40,15 @@ modules:
     build-options:
       strip: true
     build-commands:
-      - install -Dm755 /usr/bin/strings -t "$FLATPAK_DEST"/bin/
-      - install -Dm755 /usr/lib/$(gcc -print-multiarch)/libbfd-*.so -t "$FLATPAK_DEST"/lib/
-      - install -Dm755 /usr/lib/$(gcc -print-multiarch)/libsframe.so* -t "$FLATPAK_DEST"/lib/
+      - install -Dm755 /usr/bin/strings -t "${FLATPAK_DEST}/bin/"
+      - install -Dm755 /usr/lib/$(gcc -print-multiarch)/libbfd-*.so -t "${FLATPAK_DEST}/lib/"
+      - install -Dm755 /usr/lib/$(gcc -print-multiarch)/libsframe.so* -t "${FLATPAK_DEST}/lib/"
   - name: xdg_open # Workaround Wrye Bash subprocess.call bug
     buildsystem: simple
     build-options:
       strip: true
     build-commands:
-      - install -Dm755 /usr/bin/xdg-open -t "$FLATPAK_DEST"/bin
+      - install -Dm755 /usr/bin/xdg-open -t "${FLATPAK_DEST}/bin"
   - python3-reflink.yaml
   - python3-pymupdf.yaml
   - python3-requirements.yaml
@@ -83,10 +83,10 @@ modules:
   - name: wrye-bash
     buildsystem: simple
     build-commands:
-      - install -Dm755 io.github.wrye_bash.wrye-bash.sh "$FLATPAK_DEST"/bin/wrye-bash
-      - install -Dm644 io.github.wrye_bash.wrye-bash.desktop -t "$FLATPAK_DEST"/share/applications
-      - install -Dm644 Mopy/bash/images/bash.svg "$FLATPAK_DEST"/share/icons/hicolor/scalable/apps/io.github.wrye_bash.wrye-bash.svg
-      - install -Dm644 boot-settings_default.toml "$FLATPAK_DEST"/share/wrye-bash/boot-settings_default.toml
+      - install -Dm755 io.github.wrye_bash.wrye-bash.sh "${FLATPAK_DEST}/bin/wrye-bash"
+      - install -Dm644 io.github.wrye_bash.wrye-bash.desktop -t "${FLATPAK_DEST}/share/applications"
+      - install -Dm644 Mopy/bash/images/bash.svg "${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/io.github.wrye_bash.wrye-bash.svg"
+      - install -Dm644 boot-settings_default.toml "${FLATPAK_DEST}/share/wrye-bash/boot-settings_default.toml"
 
       - python scripts/compile_l10n.py
       - python -O -m compileall Mopy/bash
@@ -95,9 +95,9 @@ modules:
         mkdir -p Mopy/taglists/"$game_name";
         cp -a "$game_name"_masterlist.yaml Mopy/taglists/"$game_name"/taglist.yaml; done
 
-      - cp -a Mopy/* "$FLATPAK_DEST"/share/wrye-bash/
-      - install -Dm644 LICENSE.md "$FLATPAK_DEST"/share/licenses/wrye-bash/LICENSE.md
-      - install -Dm644 Mopy/LICENSE-THIRD-PARTY "$FLATPAK_DEST"/share/licenses/wrye-bash/LICENSE-THIRD-PARTY
+      - cp -a Mopy/* "${FLATPAK_DEST}/share/wrye-bash/"
+      - install -Dm644 LICENSE.md "${FLATPAK_DEST}/share/licenses/wrye-bash/LICENSE.md"
+      - install -Dm644 Mopy/LICENSE-THIRD-PARTY "${FLATPAK_DEST}/share/licenses/wrye-bash/LICENSE-THIRD-PARTY"
     sources:
       - type: git
         url: https://github.com/wrye-bash/wrye-bash.git
