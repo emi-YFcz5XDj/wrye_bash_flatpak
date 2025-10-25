@@ -1,0 +1,19 @@
+diff --git a/Mopy/bash/wbtemp.py b/Mopy/bash/wbtemp.py
+index e8244c628..1b5d0d536 100644
+--- a/Mopy/bash/wbtemp.py
++++ b/Mopy/bash/wbtemp.py
+@@ -287,9 +287,13 @@ def _default_global_unix():
+                 break
+             max_path = mp_parent
+         return os.path.join(max_path, '.wbtemp')
++    def _default_global_flatpak():
++        # Use XDG_CACHE_HOME as temp dir
++        return os.path.join(os.path.expanduser('~'), '.var', 'app',
++                            'io.github.wrye_bash.wrye-bash', 'cache', 'wrye-bash')
+     match platform.system():
+         case 'Windows': return _default_global_win()
+-        case 'Linux': return _default_global_unix()
++        case 'Linux': return _default_global_flatpak()
+         case 'Darwin': return _default_global_unix()
+         case _: raise RuntimeError(f'wbtemp.py does not support '
+                                    f'{platform.system()} yet')

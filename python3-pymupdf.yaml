@@ -10,8 +10,8 @@ build-commands:
     --prefix=${FLATPAK_DEST} --no-build-isolation PyMuPDF
 sources:
   - type: file
-    url: https://files.pythonhosted.org/packages/25/56/d7de0325125621a3d095eb43ce35f2e036cd4c0489ff5e8cae816f1cd8b9/pymupdf-1.25.4.tar.gz
-    sha256: 5f189466b68901055a9ddc77dc1c91cba081a60964f0caa6ff5b9b87001a0194
+    url: https://files.pythonhosted.org/packages/8d/9a/e0a4e92a85fc17be7c54afdbb113f0ade2a8bca49856d510e28bd249e462/pymupdf-1.26.5.tar.gz
+    sha256: 8ef335e07f648492df240f2247854d0e7c0467afb9c4dc2376ec30978ec158c3
     x-checker-data:
       type: pypi
       name: PyMuPDF
@@ -19,7 +19,6 @@ sources:
 modules:
   - shared-modules/glu/glu-9.json
   - name: python3-clang
-    cleanup: ['*']
     buildsystem: simple
     build-commands:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
@@ -28,13 +27,24 @@ modules:
       - type: file
         url: https://files.pythonhosted.org/packages/6e/5c/ca35e19a4f142adffa27e3d652196b7362fa612243e2b916845d801454fc/libclang-18.1.1.tar.gz
         sha256: a1214966d08d73d971287fc3ead8dfaf82eb07fb197680d8b3859dbbbbf78250
+        x-checker-data:
+          type: pypi
+          name: libclang
+    cleanup:
+      - '*'
 
   - name: swig
-    cleanup: ['*']
     sources:
       - type: archive
-        url: https://github.com/swig/swig/archive/refs/tags/v4.3.0.tar.gz
-        sha256: f2136da1137a20dfcec795fe0d17ca1a2465d28e3b307f122526629b6b2f2294
+        url: https://github.com/swig/swig/archive/refs/tags/v4.4.0.tar.gz
+        sha256: 00735db2dc5abfae43c702dd927fc81a439e32d875839200cc0b5681cc70f66e
+        x-checker-data:
+          type: anitya
+          project-id: 4919
+          stable-only: true
+          url-template: https://github.com/swig/swig/archive/refs/tags/v$version.tar.gz
+    cleanup:
+      - '*'
 
   - name: libgumbo
     buildsystem: autotools
@@ -48,6 +58,7 @@ modules:
           stable-only: true
           url-template: https://github.com/google/gumbo-parser/archive/v$version.tar.gz
     cleanup:
+      - /share/man/man1
       - /lib/pkgconfig
       - /include
       - '*.a'
@@ -68,23 +79,36 @@ modules:
           url-template: http://www.leptonica.org/source/leptonica-$version.tar.gz
     cleanup:
       - /bin
+      - /share/man/man1
 
   - name: freeglut
     buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+      - -DFREEGLUT_BUILD_STATIC_LIBS=OFF
+      - -DFREEGLUT_WAYLAND=ON
     sources:
       - type: archive
-        url: https://github.com/FreeGLUTProject/freeglut/releases/download/v3.6.0/freeglut-3.6.0.tar.gz
-        sha256: 9c3d4d6516fbfa0280edc93c77698fb7303e443c1aaaf37d269e3288a6c3ea52
+        url: https://github.com/FreeGLUTProject/freeglut/archive/refs/tags/v3.6.0.tar.gz
+        sha256: 16de4f51dc1efd663a1a58ba5552e54f8783b77478289c95dca474a4d39ddd02
+        x-checker-data:
+          type: anitya
+          project-id: 846
+          stable-only: true
+          url-template: https://github.com/FreeGLUTProject/freeglut/archive/refs/tags/v$version.tar.gz
+      - type: patch
+        paths:
+          - python3-pymupdf-freeglut-0001-egl-fix-fgPlatformDestroyContext-prototype-for-C23.patch
     cleanup:
+      - /share/man/man1
       - /include
 
   - name: mupdf
-    cleanup: [/include, /bin, '*.a', '*.cmd']
     build-options:
       env:
-        LLVM_INSTALL_DIR: /usr/lib/sdk/llvm20
-      append-path: /usr/lib/sdk/llvm20/bin
-      prepend-ld-library-path: /usr/lib/sdk/llvm20/lib
+        LLVM_INSTALL_DIR: /usr/lib/sdk/llvm21
+      append-path: /usr/lib/sdk/llvm21/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
     no-autogen: true
     buildsystem: simple
     build-commands:
@@ -95,14 +119,13 @@ modules:
       - cp -r platform/c++/include/mupdf /app/include/
     sources:
       - type: archive
-        url: https://mupdf.com/downloads/archive/mupdf-1.25.4-source.tar.gz
-        sha256: 74b943038fe81594bf7fc5621c60bca588b2847f0d46fb2e99652a21fa0d9491
+        url: https://mupdf.com/downloads/archive/mupdf-1.26.5-source.tar.gz
+        sha256: a52daf7b2f41c5dc94d4691cd1e7cae25fc488556e614d8c3c4491d327473c40
         x-checker-data:
           type: anitya
           project-id: 2034
           stable-only: true
           url-template: https://mupdf.com/downloads/archive/mupdf-$version-source.tar.gz
-
       - type: shell
         commands:
           - |
@@ -110,3 +133,9 @@ modules:
                 printf "LINUX_OR_OPENBSD := yes\n"
                 printf "USE_SYSTEM_LIBS := yes\n"
             } > user.make
+    cleanup:
+      - /bin
+      - /share/man/man1
+      - /include
+      - '*.a'
+      - '*.cmd'

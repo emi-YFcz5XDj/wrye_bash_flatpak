@@ -11,19 +11,20 @@ function cargo_gen
 	flatpak run --command=flatpak-cargo-generator org.flatpak.Builder --yaml $argv
 end
 
-function gen_requirements
-	pip_gen -o python3-pre setuptools-scm &
-	#pip_gen PyMuPDF==1.25.1 &
-	pip_gen -r requirements.txt --ignore-installed lxml,requests &
+function gen_fetch_requirements
+	pip_gen --build-only -o python3-setuptools_scm setuptools_scm
+end
+function gen_compile_requirements
+	curl -sLo cargo-maturin.lock https://raw.githubusercontent.com/PyO3/maturin/refs/tags/v1.9.6/Cargo.lock |
+		cargo_gen -o cargo-maturin.yaml cargo-maturin.lock &
+	curl -sLo cargo-cryptography.lock https://raw.githubusercontent.com/pyca/cryptography/refs/tags/46.0.3/Cargo.lock |
+		cargo_gen -o cargo-cryptography.yaml cargo-cryptography.lock &
+	pip_gen --build-only -o python3-setuptools_rust setuptools_rust  &
+	pip_gen --build-only -r requirements-scripts.txt &
 	wait
 end
-function gen_build_requirements
-	curl -sLo cargo-maturin.lock https://raw.githubusercontent.com/PyO3/maturin/refs/tags/v1.8.6/Cargo.lock |
-		cargo_gen -o cargo-maturin.yaml cargo-maturin.lock &
-	curl -sLo cargo-cryptography.lock https://raw.githubusercontent.com/pyca/cryptography/refs/tags/45.0.3/Cargo.lock |
-		cargo_gen -o cargo-cryptography.yaml cargo-cryptography.lock &
-	pip_gen -o python3-build setuptools_rust &
-	pip_gen -r requirements-scripts.txt &
+function gen_requirements
+	pip_gen -r requirements.txt --ignore-installed lxml,requests &
 	wait
 end
 
@@ -39,12 +40,13 @@ function gen_taglists
 			podman run --rm --security-opt=no-new-privileges --cap-drop all --network none \
 				-e url="$url" -e dest_file="$dest_file" -e checksum="$checksum" docker.io/mikefarah/yq eval -n \
 				'[ .type = "file" | .url = env(url) | .dest-filename = env(dest_file) | .sha256 = env(checksum) ]' |
-			string collect -N 
+			string collect -N
 		)
 	end
 	echo $output | string replace -r '^ -' '-' | string replace -r '  -$' '' > taglists.yaml # Workaround strange fish behaviour
 end
 
+gen_fetch_requirements
+gen_compile_requirements
 gen_requirements
-gen_build_requirements
 gen_taglists

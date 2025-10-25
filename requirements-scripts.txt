@@ -1,9 +1,10 @@
 # This file contains only the development/compile-time dependencies.
 # Used by the CI when it wants to install depedencies for scripts without
 # pulling in the tons of extra stuff from requirements.txt.
-isort==5.13.2
-pyfiglet==1.0.2
-pygit2==1.18.0 ### pygit2==1.16.0 ### Upgraded to solve compilation error
-PyGithub==2.5.0
-### pyinstaller==6.11.1 ### Removed since upstream packaging is not used
-pytest==8.3.4
+isort==7.0.0
+pyfiglet==1.0.4
+pygit2==1.18.2
+PyGithub==2.8.1
+# PY3.13: try upgrading again & testing if restoring from backup still crashes
+### pyinstaller==6.9.0
+pytest==8.4.2
