@@ -17,7 +17,7 @@ modules:
   # Fetch time dependencies
   - python3-setuptools_scm.yaml
 
-  # Runtime dependencies
+  # Run time dependencies
   - name: 7-zip
     buildsystem: simple
     subdir: CPP/7zip/Bundles/Alone2
@@ -43,7 +43,7 @@ modules:
       - install -Dm755 /usr/bin/strings -t "${FLATPAK_DEST}/bin/"
       - install -Dm755 /usr/lib/$(gcc -print-multiarch)/libbfd-*.so -t "${FLATPAK_DEST}/lib/"
       - install -Dm755 /usr/lib/$(gcc -print-multiarch)/libsframe.so* -t "${FLATPAK_DEST}/lib/"
-  - name: xdg_open # Workaround Wrye Bash subprocess.call bug
+  - name: xdg_open # Workaround subprocess.call bug
     buildsystem: simple
     build-options:
       strip: true
