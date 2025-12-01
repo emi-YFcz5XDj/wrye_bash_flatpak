@@ -9,11 +9,11 @@ build-commands:
     --prefix=${FLATPAK_DEST} "maturin" --no-build-isolation
 sources:
   - type: file
-    url: https://files.pythonhosted.org/packages/9a/35/c3370188492f4c139c7a318f438d01b8185c216303c49c4bc885c98b6afb/maturin-1.9.6.tar.gz
-    sha256: 2c2ae37144811d365509889ed7220b0598487f1278c2441829c3abf56cc6324a
+    url: https://files.pythonhosted.org/packages/02/44/c593afce7d418ae6016b955c978055232359ad28c707a9ac6643fc60512d/maturin-1.10.2.tar.gz
+    sha256: 259292563da89850bf8f7d37aa4ddba22905214c1e180b1c8f55505dfd8c0e81
     x-checker-data:
-          type: pypi
-          name: maturin
+      type: pypi
+      name: maturin
   - cargo-maturin.yaml
 cleanup:
   - '*'
