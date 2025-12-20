@@ -13,10 +13,12 @@ wxPython==4.2.3
 lxml==6.0.2
 # For parsing download conditions when checking for updates
 ### packaging==25.0
+# For generating bash_default.ini section headers
+pyfiglet==1.0.3
 # For PDF support in the doc browser
 PyMuPDF==1.26.5
 # For reflink copies (does not support Windows/ReFS yet)
-### reflink==0.2.2; sys_platform != 'win32' ### This requires PEP 517
+### reflink==0.2.2; sys_platform != 'win32'
 # For various Internet-based functionality
 requests[use_chardet_on_py3]==2.32.5
 # For sending files to the recycle bin on non-Windows platforms

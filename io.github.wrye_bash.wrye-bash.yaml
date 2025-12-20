@@ -17,7 +17,7 @@ modules:
   # Fetch time dependencies
   - python3-setuptools_scm.yaml
 
-  # Run time dependencies
+  # Runtime dependencies
   - name: 7-zip
     buildsystem: simple
     subdir: CPP/7zip/Bundles/Alone2
@@ -53,7 +53,7 @@ modules:
   - python3-pymupdf.yaml
   - python3-requirements.yaml
 
-  # Compile time dependencies
+  # Build time dependencies
   - python3-setuptools_rust.yaml
   - python3-maturin.yaml # Thanks PyGithub
   - python3-cryptography.yaml
@@ -90,8 +90,8 @@ modules:
 
       - python scripts/compile_l10n.py
       - python -O -m compileall Mopy/bash
-      - for game_name in Enderal Fallout3 FalloutNV Fallout4 Fallout4VR
-        Morrowind Oblivion Skyrim SkyrimSE SkyrimVR Starfield; do
+      - for game_name in Enderal Fallout3 FalloutNV Fallout4
+        Morrowind Oblivion Skyrim SkyrimSE Starfield; do
         mkdir -p Mopy/taglists/"$game_name";
         cp -a "$game_name"_masterlist.yaml Mopy/taglists/"$game_name"/taglist.yaml; done
 
@@ -101,16 +101,18 @@ modules:
     sources:
       - type: git
         url: https://github.com/wrye-bash/wrye-bash.git
-        commit: 6949dd8d7f250da726fd14db0c32065f75ca8569
+        commit: 8c1315bbe099599e910f7eb513687d1aca34b4a7
       - type: patch
         paths:
-          - 0001_write_BashBugDump_to_xdg_data_home.patch
-          - 0002_detect_flatpak_steam.patch
-          - 0003_change_game_not_found_dialog.patch
-          - 0004_read_bash_ini_from_xdg_config_home.patch
-          - 0005_change_backup_files.patch
-          - 0006_disable_update_checking.patch
-          - 0007_change_default_temp_dir.patch
+          - 0001-write_BashBugDump_to_xdg_data_home.patch
+          - 0002-detect_flatpak_steam.patch
+          - 0003-read_bash_ini_from_xdg_config_home.patch
+          - 0004-change_backup_files.patch
+          - 0005-disable_update_checking.patch
+          - 0006-change_default_temp_dir.patch
+          - 9000-change_game_not_found_dialog.patch
+          - 9001-update_l10n_template.patch
+          - 9002-update_l10n.patch
       - type: file
         path: io.github.wrye_bash.wrye-bash.sh
       - type: file

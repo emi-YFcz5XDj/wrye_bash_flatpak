@@ -1,0 +1,18 @@
+diff --git a/Mopy/bash/bash.py b/Mopy/bash/bash.py
+index 566a6b54f..c3c89261d 100644
+--- a/Mopy/bash/bash.py
++++ b/Mopy/bash/bash.py
+@@ -730,9 +730,10 @@ def _import_bush_and_set_game(opts):
+         if len(game_infos) == 0:
+             _show_boot_popup(_(
+                 'Wrye Bash could not find a game to manage. Make sure to '
+-                'launch games you installed through Steam once and enable '
+-                'mods on games you installed through the Windows '
+-                'Store.') + '\n\n' + _(
++                'launch games you installed through Steam once. '
++                '') + '\n\n' + _(
++                'If your games are installed in non-default paths, you should '
++                'give the flatpak package permission to access those folders. '
+                 'You can also use the %(cli_game_detect)s command line '
+                 'argument or %(bash_config_file)s to specify the path '
+                 'manually.') % {'cli_game_detect': '-o',

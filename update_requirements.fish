@@ -29,10 +29,9 @@ function gen_requirements
 end
 
 function gen_taglists
-	set -f taglist_version v0.21
+	set -f taglist_version v0.26
 	set -f output
-	for game_name in Enderal Fallout3 FalloutNV Fallout4 Fallout4VR \
-			Morrowind Oblivion Skyrim SkyrimSE SkyrimVR Starfield;
+	for game_name in Enderal Fallout3 FalloutNV Fallout4 Morrowind Oblivion Skyrim SkyrimSE Starfield;
 		set -l url https://raw.githubusercontent.com/loot/(string lower "$game_name")/"$taglist_version"/masterlist.yaml
 		set -l dest_file "$game_name"_masterlist.yaml
 		set -l checksum (curl -sLo - "$url" | sha256sum)

@@ -1,0 +1,17 @@
+diff --git a/Mopy/bash/wbtemp.py b/Mopy/bash/wbtemp.py
+index 6bf65f6c5..9b2a9ecd7 100644
+--- a/Mopy/bash/wbtemp.py
++++ b/Mopy/bash/wbtemp.py
+@@ -294,9 +294,11 @@ def _default_global_unix():
+                 break
+             max_path = mp_parent
+         return os.path.join(max_path, '.wbtemp')
++    def _default_global_flatpak():
++        return os.path.join(bolt.GPath(os.getenv('XDG_CACHE_HOME')), 'wrye-bash')
+     match platform.system():
+         case 'Windows': return _default_global_win()
+-        case 'Linux': return _default_global_unix()
++        case 'Linux': return _default_global_flatpak()
+         case 'Darwin': return _default_global_unix()
+         case _: raise RuntimeError(f'wbtemp.py does not support '
+                                    f'{platform.system()} yet')

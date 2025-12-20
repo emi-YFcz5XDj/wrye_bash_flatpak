@@ -1,0 +1,45 @@
+diff --git a/Mopy/bash/bash.py b/Mopy/bash/bash.py
+index 91e2f85b2..12fd1370a 100644
+--- a/Mopy/bash/bash.py
++++ b/Mopy/bash/bash.py
+@@ -587,7 +587,7 @@ def _main(opts, wx_locale, wxver):
+     instance = _wx.SingleInstanceChecker(u'Wrye Bash') # must stay alive !
+     assure_single_instance(instance)
+     # We need the Mopy dirs to initialize restore settings instance
+-    bash_ini_path, restore_ = u'bash.ini', None
++    bash_ini_path, restore_ = ''.join((os.getenv('XDG_DATA_HOME'), 'bash.ini')), None
+     # import barb, which does not import from bosh/bush
+     from . import barb
+     if opts.restore:
+diff --git a/Mopy/bash/gen_ini.py b/Mopy/bash/gen_ini.py
+index 1cf0b09ac..2d7eb8304 100644
+--- a/Mopy/bash/gen_ini.py
++++ b/Mopy/bash/gen_ini.py
+@@ -24,7 +24,7 @@
+ 
+ __author__ = 'sibir'
+ 
+-from os import path
++from os import path, getenv
+ from textwrap import fill
+ from zlib import crc32
+ 
+@@ -553,13 +553,14 @@ def _generate_default_bash_ini():
+     return default_bash_ini, crc32(default_bash_ini.encode())
+ 
+ def write_default_bash_ini():
+-    """Write bash_default.ini if missing or changed."""
++    """Write bash.ini if missing or changed."""
+     default_bash_ini, default_ini_crc = _generate_default_bash_ini()
+-    if path.exists('bash_default.ini'):
+-        with open('bash_default.ini', 'r') as f:
++    bash_ini_path = ''.join((getenv('XDG_DATA_HOME'), 'bash.ini'))
++    if path.exists(bash_ini_path):
++        with open(bash_ini_path, 'r') as f:
+             curr_default_ini_crc = crc32(f.read().encode())
+     else:
+         curr_default_ini_crc = 0
+     if curr_default_ini_crc != default_ini_crc:
+-        with open('bash_default.ini', 'w') as f:
++        with open(bash_ini_path, 'w') as f:
+             f.write(default_bash_ini)

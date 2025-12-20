@@ -1,0 +1,13 @@
+diff --git a/Mopy/bash/bash.py b/Mopy/bash/bash.py
+index 8f2ca1e50..91e2f85b2 100644
+--- a/Mopy/bash/bash.py
++++ b/Mopy/bash/bash.py
+@@ -84,7 +84,7 @@ def _print(s):
+     if pathToProg:
+         os.chdir(pathToProg)
+     global _bugdump_handle
+-    _bugdump_handle = open(os.path.join(os.getcwd(), 'BashBugDump.log'), 'w',
++    _bugdump_handle = open(os.path.join(bolt.GPath(os.getenv('XDG_DATA_HOME')), 'BashBugDump.log'), 'w',
+         buffering=1, encoding='utf-8')
+     _install_bugdump()
+ 
