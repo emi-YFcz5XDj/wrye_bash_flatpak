@@ -1,0 +1,13 @@
+diff --git a/Mopy/bash/bash.py b/Mopy/bash/bash.py
+index 91e2f85b2..566a6b54f 100644
+--- a/Mopy/bash/bash.py
++++ b/Mopy/bash/bash.py
+@@ -587,7 +587,7 @@ def _main(opts, wx_locale, wxver):
+     instance = _wx.SingleInstanceChecker(u'Wrye Bash') # must stay alive !
+     assure_single_instance(instance)
+     # We need the Mopy dirs to initialize restore settings instance
+-    bash_ini_path, restore_ = u'bash.ini', None
++    bash_ini_path, restore_ = (bolt.GPath(os.getenv('XDG_DATA_HOME')), 'bash.ini'), None
+     # import barb, which does not import from bosh/bush
+     from . import barb
+     if opts.restore:

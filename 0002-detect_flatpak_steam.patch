@@ -1,0 +1,30 @@
+diff --git a/Mopy/bash/env/linux.py b/Mopy/bash/env/linux.py
+index 0628d6cdf..ebe152c12 100644
+--- a/Mopy/bash/env/linux.py
++++ b/Mopy/bash/env/linux.py
+@@ -133,14 +133,21 @@ def _get_xdg_path(xdg_var: str) -> _Path | None:
+ @functools.cache
+ def _get_steam_path() -> _Path | None:
+     """Retrieve the path used by Steam."""
+-    # Resolve the .steam/root symlink, the user may have moved their Steam
+-    # install out of the default (.local/share/Steam) location
++    # Resolve common steam installation paths
+     try:
+-        steam_path = os.path.realpath(os.path.expanduser('~/.steam/root'),
++        steam_path = os.path.realpath(
++            os.path.expanduser('~/.var/app/com.valvesoftware.Steam/data/Steam'),
++            strict=True)
++    except OSError:
++        pass
++    else: return _GPath_no_norm(steam_path)
++    try:
++        steam_path = os.path.realpath(
++            os.path.expanduser('~/.steam/root'),
+             strict=True)
+     except OSError:
+         return None # Steam path doesn't exist
+-    return _GPath_no_norm(steam_path)
++    else: return _GPath_no_norm(steam_path)
+ 
+ # API - Functions =============================================================
+ ##: Several of these should probably raise instead
