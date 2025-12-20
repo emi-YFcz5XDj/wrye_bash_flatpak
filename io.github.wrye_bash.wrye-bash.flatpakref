@@ -1,0 +1,10 @@
+[Flatpak Ref]
+Title=Wrye Bash Unofficial Repo
+Name=io.github.wrye_bash.wrye-bash
+Url=
+SuggestRemoteName=wrye-bash
+Homepage=https://gitlab.com/emi-t1r4kaWp/wrye_bash_flatpak
+Icon=https://wrye-bash.github.io/bash/images/bash.svg
+RuntimeRepo=https://dl.flathub.org/repo/flathub.flatpakrepo
+IsRuntime=false
+GPGKey=
