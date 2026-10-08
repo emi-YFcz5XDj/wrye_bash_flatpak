@@ -1,37 +1,37 @@
 - type: file
-  url: https://raw.githubusercontent.com/loot/enderal/v0.26/masterlist.yaml
+  url: https://raw.githubusercontent.com/loot/enderal/v0.29/masterlist.yaml
   dest-filename: Enderal_masterlist.yaml
   sha256: e692331dea4f852b79a6456429ad9e5ac22627b926da7e7243e4577e149d7e29
 - type: file
-  url: https://raw.githubusercontent.com/loot/fallout3/v0.26/masterlist.yaml
+  url: https://raw.githubusercontent.com/loot/fallout3/v0.29/masterlist.yaml
   dest-filename: Fallout3_masterlist.yaml
-  sha256: 989f82194f65af3f038d026c3565a0556b43a68b4f1f33a5b4e22273f49e218b
+  sha256: 4947d03d6e5dbe1e933d597eee467e7554fc5f744a207736c3964df12feb1f29
 - type: file
-  url: https://raw.githubusercontent.com/loot/falloutnv/v0.26/masterlist.yaml
+  url: https://raw.githubusercontent.com/loot/falloutnv/v0.29/masterlist.yaml
   dest-filename: FalloutNV_masterlist.yaml
-  sha256: 21cd4fabfedecf6da8553ac1f2fd59f60bfe1fcc8412accfff00d5e8b6ea0ac2
+  sha256: ec2d9f340f1ad308aef4fa8e4190408a9ddf0a2148131945fdd95ffd38064ad4
 - type: file
-  url: https://raw.githubusercontent.com/loot/fallout4/v0.26/masterlist.yaml
+  url: https://raw.githubusercontent.com/loot/fallout4/v0.29/masterlist.yaml
   dest-filename: Fallout4_masterlist.yaml
-  sha256: fc48d790d20e9b4db90b37ab58a87a343ada33b8ee6102420464a407e1e77ce9
+  sha256: b018c8c92de4fe0c4cb19476ee41a7cc0b37d40e1922e3810b0cc33526d65c06
 - type: file
-  url: https://raw.githubusercontent.com/loot/morrowind/v0.26/masterlist.yaml
+  url: https://raw.githubusercontent.com/loot/morrowind/v0.29/masterlist.yaml
   dest-filename: Morrowind_masterlist.yaml
-  sha256: ffd36bc08df55565e9ad5f179b72ffe53e4404c06ec8c46773defe354a2f69c6
+  sha256: 7ecd834f9189fe775aef6512d75692df80113b944f9d3f6d22350f00601b87ff
 - type: file
-  url: https://raw.githubusercontent.com/loot/oblivion/v0.26/masterlist.yaml
+  url: https://raw.githubusercontent.com/loot/oblivion/v0.29/masterlist.yaml
   dest-filename: Oblivion_masterlist.yaml
-  sha256: 70ec7f695b65e5f7a39b5c8b91341b76c791f56be0c00225dad978c3c6194e07
+  sha256: 3e0330f4e72e977e5393ed915f6dc466b6c10d8336529330e1040ef6ad5480e0
 - type: file
-  url: https://raw.githubusercontent.com/loot/skyrim/v0.26/masterlist.yaml
+  url: https://raw.githubusercontent.com/loot/skyrim/v0.29/masterlist.yaml
   dest-filename: Skyrim_masterlist.yaml
-  sha256: 3706908144c9043e314fb965b0d2cd0bf5dea13d47c4ccd70e6f98c79a1aec62
+  sha256: 6d1fed6da0f598e94d9b415e2e455987b1db43beab95d25f47d4c63adbbfa6e9
 - type: file
-  url: https://raw.githubusercontent.com/loot/skyrimse/v0.26/masterlist.yaml
+  url: https://raw.githubusercontent.com/loot/skyrimse/v0.29/masterlist.yaml
   dest-filename: SkyrimSE_masterlist.yaml
-  sha256: a00088f29b97cb70efbd95fd8ca2d6c1117e0702645ef97d4d9a6a4c47260f38
+  sha256: c3b27e088303b0099e978385dc3d0b64a92c93917cbb8a8c1184c0ac82fcfd49
 - type: file
-  url: https://raw.githubusercontent.com/loot/starfield/v0.26/masterlist.yaml
+  url: https://raw.githubusercontent.com/loot/starfield/v0.29/masterlist.yaml
   dest-filename: Starfield_masterlist.yaml
-  sha256: 1e1714552975f5c2d027dfbc94eca838f7b2f7cfb7d6ee20da10bdf7b33816ee
+  sha256: b6ae3640d43a33d0fa23a65ba739d9c75707426880d2de458b90fb2de5373c63
 

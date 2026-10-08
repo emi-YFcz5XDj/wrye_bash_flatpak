@@ -5,6 +5,7 @@ repo/**
 .buildconfig
 
 .vscode
+.venv/**
 
 taglists/**
 cargo-*.lock

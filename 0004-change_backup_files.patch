@@ -1,9 +1,19 @@
+From a8c29ef7a3b7dec4315e04b0b60d7f4738f4ca1f Mon Sep 17 00:00:00 2001
+From: "Alice H." <alice.hall0451+vcs@gmail.com>
+Date: Thu, 8 Oct 2026 07:33:33 +0100
+Subject: [PATCH 4/7] change_backup_files
+
+Signed-off-by: Alice H. <alice.hall0451+vcs@gmail.com>
+---
+ Mopy/bash/barb.py | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
 diff --git a/Mopy/bash/barb.py b/Mopy/bash/barb.py
-index 6905768c6..8daed1129 100644
+index b7fc7e5fa..8c4154624 100644
 --- a/Mopy/bash/barb.py
 +++ b/Mopy/bash/barb.py
 @@ -61,7 +61,6 @@ def _init_settings_files(bak_name, mg_name, root_prefix, mods_folder_name):
-     if not initialization.bash_dirs_initialized:
+     if not bass.bash_dirs_initialized:
          raise BoltError(u'_init_settings_files: Bash dirs are not initialized')
      settings_info = {
 -        (dirs[u'mopy'], jo(bak_name, u'Mopy')): {u'bash.ini', },
@@ -21,3 +31,6 @@ index 6905768c6..8daed1129 100644
          (dirs['mods'].join('Bash Patches'),
           jo(bak_name, mods_folder_name, 'Bash Patches')): {},
          (dirs['mods'].join('BashTags'),
+-- 
+2.52.0
+

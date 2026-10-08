@@ -1,18 +1,30 @@
+From f54d87cc871728a4598bd841d6a7a2364794a539 Mon Sep 17 00:00:00 2001
+From: "Alice H." <alice.hall0451+vcs@gmail.com>
+Date: Thu, 8 Oct 2026 07:34:33 +0100
+Subject: [PATCH 7/7] change_game_not_found_dialog
+
+Signed-off-by: Alice H. <alice.hall0451+vcs@gmail.com>
+---
+ Mopy/bash/bash.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
 diff --git a/Mopy/bash/bash.py b/Mopy/bash/bash.py
-index 566a6b54f..c3c89261d 100644
+index 995dd5ee2..2a3d272d9 100644
 --- a/Mopy/bash/bash.py
 +++ b/Mopy/bash/bash.py
-@@ -730,9 +730,10 @@ def _import_bush_and_set_game(opts):
+@@ -676,9 +676,9 @@ def _import_bush_and_set_game(__wx, opts):
          if len(game_infos) == 0:
-             _show_boot_popup(_(
+             _show_boot_popup(__wx, _(
                  'Wrye Bash could not find a game to manage. Make sure to '
 -                'launch games you installed through Steam once and enable '
 -                'mods on games you installed through the Windows '
 -                'Store.') + '\n\n' + _(
 +                'launch games you installed through Steam once. '
-+                '') + '\n\n' + _(
-+                'If your games are installed in non-default paths, you should '
++                '') + '\n\n' + _( 'If your games are in non-default paths, '
 +                'give the flatpak package permission to access those folders. '
                  'You can also use the %(cli_game_detect)s command line '
                  'argument or %(bash_config_file)s to specify the path '
                  'manually.') % {'cli_game_detect': '-o',
+-- 
+2.52.0
+

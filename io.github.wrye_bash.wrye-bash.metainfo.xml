@@ -12,18 +12,18 @@
 	<url type="help">https://wrye-bash.github.io/docs/Wrye%20Bash%20General%20Readme.html</url>
 	<description>
 		<p>
-			Wrye Bash is a mod management utility for games based on 
-			Bethesda&apos;s Creation Engine, with a rich set of 
-			features. This is a fork of the Wrye Bash related code 
-			from the SVN 3177 trunk revision. We are in the process 
-			of refactoring the code to eventually support more games, 
-			offering the same feature set for all of them. Please see 
+			Wrye Bash is a mod management utility for games based on
+			Bethesda&apos;s Creation Engine, with a rich set of
+			features. This is a fork of the Wrye Bash related code
+			from the SVN 3177 trunk revision. We are in the process
+			of refactoring the code to eventually support more games,
+			offering the same feature set for all of them. Please see
 			our Contributing.md if interested in contributing.
 		</p>
 		<p> #### Supported Games </p>
 		<p>
-			Here is a list of supported games with the minimal patch 
-			version that Bash was tested on (previous versions or 
+			Here is a list of supported games with the minimal patch
+			version that Bash was tested on (previous versions or
 			latest versions may or may not work):
 		</p>
 		<ul>
@@ -56,6 +56,26 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="315" date="2026-09-14">
+			<description>
+				<p>315 Refresh Optimizations, Oblivion Remastered [2026/09/14] [Various community members]</p>
+				<ul>
+					<li>#747: [Starfield] Generate achlist feature should exclude .psc files [Utumno]</li>
+					<li>#744: Update loot support for metadata version 29 [Utumno]</li>
+					<li>#733: Add command line argument equivalent to sOblivionMods INI setting [sibir-ine]</li>
+					<li>#731: Remove Nvidia Fog Fix [sibir-ine]</li>
+					<li>#727: Allow the Bashed Patch to merge ESM-flagged files [Infernio]</li>
+					<li>#726: FO3/FNV: BSA Redirection did not work [Infernio]</li>
+					<li>#718: Actor: Vertical Object Detection - Values need to be adjusted [sibir-ine]</li>
+					<li>#705: Oblivion Remastered - Tweak Patcher Testing [BeermotorWB]</li>
+					<li>#704: Markers always have a blank name when created or renamed [Utumno]</li>
+					<li>#699: Oblivion Remastered Support [Infernio]</li>
+					<li>#687: Record children do not respect load order when merged [Utumno]</li>
+					<li>#602: Add several new settings tweaks [sibir-ine]</li>
+					<li>#353: Refresh Optimizations II [Utumno]</li>
+				</ul>
+			</description>
+		</release>
 		<release version="314" date="2025-04-05">
 			<description>
 				<p>314 Mini-Release for MO2 [2025/04/05] [Various community members]</p>

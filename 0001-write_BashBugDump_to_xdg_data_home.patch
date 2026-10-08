@@ -1,13 +1,26 @@
+From e89cf6d85e7a72d5216775328c30e517d573e6d7 Mon Sep 17 00:00:00 2001
+From: "Alice H." <alice.hall0451+vcs@gmail.com>
+Date: Thu, 8 Oct 2026 07:32:22 +0100
+Subject: [PATCH 1/7] write_BashBugDump_to_xdg_data_home
+
+Signed-off-by: Alice H. <alice.hall0451+vcs@gmail.com>
+---
+ Mopy/bash/bash.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/Mopy/bash/bash.py b/Mopy/bash/bash.py
-index 8f2ca1e50..91e2f85b2 100644
+index cb78abb66..c11809f0d 100644
 --- a/Mopy/bash/bash.py
 +++ b/Mopy/bash/bash.py
-@@ -84,7 +84,7 @@ def _print(s):
+@@ -83,7 +83,7 @@ def _print(s):
      if pathToProg:
          os.chdir(pathToProg)
      global _bugdump_handle
 -    _bugdump_handle = open(os.path.join(os.getcwd(), 'BashBugDump.log'), 'w',
-+    _bugdump_handle = open(os.path.join(bolt.GPath(os.getenv('XDG_DATA_HOME')), 'BashBugDump.log'), 'w',
++    _bugdump_handle = open(os.path.join(os.getenv('XDG_DATA_HOME'), 'BashBugDump.log'), 'w',
          buffering=1, encoding='utf-8')
      _install_bugdump()
  
+-- 
+2.52.0
+

@@ -1,5 +1,15 @@
+From ed89ec5ad38621c5370782cf5d5dbd27a2bdba2a Mon Sep 17 00:00:00 2001
+From: "Alice H." <alice.hall0451+vcs@gmail.com>
+Date: Thu, 8 Oct 2026 07:33:43 +0100
+Subject: [PATCH 5/7] disable_update_checking
+
+Signed-off-by: Alice H. <alice.hall0451+vcs@gmail.com>
+---
+ Mopy/bash/basher/constants.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/Mopy/bash/basher/constants.py b/Mopy/bash/basher/constants.py
-index 1ece1de93..d762934d2 100644
+index 3c9a0172d..415aef72b 100644
 --- a/Mopy/bash/basher/constants.py
 +++ b/Mopy/bash/basher/constants.py
 @@ -237,7 +237,7 @@
@@ -11,3 +21,6 @@ index 1ece1de93..d762934d2 100644
      'bash.update_check.cooldown': 1,
      'bash.update_check.last_checked': 0,
      #--Appearance
+-- 
+2.52.0
+

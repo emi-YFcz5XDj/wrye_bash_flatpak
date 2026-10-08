@@ -1,5 +1,15 @@
+From 3de921abb4f2d2ce66ad0177585661ca81965c06 Mon Sep 17 00:00:00 2001
+From: "Alice H." <alice.hall0451+vcs@gmail.com>
+Date: Thu, 8 Oct 2026 07:33:52 +0100
+Subject: [PATCH 6/7] change_default_temp_dir
+
+Signed-off-by: Alice H. <alice.hall0451+vcs@gmail.com>
+---
+ Mopy/bash/wbtemp.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
 diff --git a/Mopy/bash/wbtemp.py b/Mopy/bash/wbtemp.py
-index 6bf65f6c5..9b2a9ecd7 100644
+index 2996e9fdc..2c34ac787 100644
 --- a/Mopy/bash/wbtemp.py
 +++ b/Mopy/bash/wbtemp.py
 @@ -294,9 +294,11 @@ def _default_global_unix():
@@ -15,3 +25,6 @@ index 6bf65f6c5..9b2a9ecd7 100644
          case 'Darwin': return _default_global_unix()
          case _: raise RuntimeError(f'wbtemp.py does not support '
                                     f'{platform.system()} yet')
+-- 
+2.52.0
+

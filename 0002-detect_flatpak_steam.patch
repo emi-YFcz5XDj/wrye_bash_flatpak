@@ -1,5 +1,15 @@
+From bcc23421fee54d1f9ca42a04bf1cf13a996a559d Mon Sep 17 00:00:00 2001
+From: "Alice H." <alice.hall0451+vcs@gmail.com>
+Date: Thu, 8 Oct 2026 07:32:39 +0100
+Subject: [PATCH 2/7] detect_flatpak_steam
+
+Signed-off-by: Alice H. <alice.hall0451+vcs@gmail.com>
+---
+ Mopy/bash/env/linux.py | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
 diff --git a/Mopy/bash/env/linux.py b/Mopy/bash/env/linux.py
-index 0628d6cdf..ebe152c12 100644
+index cc3d2f150..39ec9c423 100644
 --- a/Mopy/bash/env/linux.py
 +++ b/Mopy/bash/env/linux.py
 @@ -133,14 +133,21 @@ def _get_xdg_path(xdg_var: str) -> _Path | None:
@@ -28,3 +38,6 @@ index 0628d6cdf..ebe152c12 100644
  
  # API - Functions =============================================================
  ##: Several of these should probably raise instead
+-- 
+2.52.0
+
