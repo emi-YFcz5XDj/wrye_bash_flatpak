@@ -31,7 +31,7 @@ function gen_taglists
 			string trim -r | string collect -N
 		)
 	end
-	echo $output | string replace -r '^ -' '-' > taglists.yaml # Workaround strange fish behaviour
+	printf %s $output > taglists.yaml
 	wait
 end
 
