@@ -34,7 +34,7 @@ modules:
   - python3-requirements-scripts.yaml
   - python3-requirements.yaml
 
-  - name: xdg_open # Workaround subprocess.call bug
+  - name: xdg-open # Workaround subprocess.call bug
     buildsystem: simple
     build-options:
       strip: true

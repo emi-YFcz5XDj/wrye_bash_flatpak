@@ -1,4 +1,4 @@
-# Generated with flatpak-pip-generator --runtime=org.gnome.Sdk//51 --yaml -r requirements.txt --ignore-installed lxml,requests --prefer-wheels lz4,PyMuPDF
+# Generated with flatpak-pip-generator --runtime=org.gnome.Sdk//51 --yaml -r requirements.txt --prefer-wheels PyMuPDF --ignore-installed lxml,requests --cleanup scripts
 name: python3-requirements
 buildsystem: simple
 build-commands: []
@@ -13,6 +13,9 @@ modules:
         type: file
         url: https://files.pythonhosted.org/packages/38/6f/f5fbc992a329ee4e0f288c1fe0e2ad9485ed064cac731ed2fe47dcc38cbf/chardet-5.2.0-py3-none-any.whl
         sha256: e1cf59446890a00105fe7b7912492ea04b6e6f06d4b742b2c788469e34c82970
+    cleanup:
+      - /bin
+      - /share/man/man1
   - name: python3-lz4
     buildsystem: simple
     build-commands:
@@ -20,15 +23,11 @@ modules:
         --prefix=${FLATPAK_DEST} "lz4==4.4.5" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/f1/01/d52c7b11eaa286d49dae619c0eec4aabc0bf3cda7a7467eb77c62c4471f3/lz4-4.4.5-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
-        sha256: 0bba042ec5a61fa77c7e380351a61cb768277801240249841defd2ff0a10742f
-        only-arches:
-          - x86_64
-      - type: file
-        url: https://files.pythonhosted.org/packages/67/79/a4e91872ab60f5e89bfad3e996ea7dc74a30f27253faf95865771225ccba/lz4-4.4.5-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl
-        sha256: 3b84a42da86e8ad8537aabef062e7f661f4a877d1c74d65606c49d835d36d668
-        only-arches:
-          - aarch64
+        url: https://files.pythonhosted.org/packages/57/51/f1b86d93029f418033dddf9b9f79c8d2641e7454080478ee2aab5123173e/lz4-4.4.5.tar.gz
+        sha256: 5f0b9e53c1e82e88c10d7c180069363980136b9d7a8306c4dca4f760d60c39f0
+    cleanup:
+      - /bin
+      - /share/man/man1
   - name: python3-PyYAML
     buildsystem: simple
     build-commands:
@@ -38,6 +37,9 @@ modules:
       - type: file
         url: https://files.pythonhosted.org/packages/05/8e/961c0007c59b8dd7729d542c61a4d537767a59645b82a0b521206e1e25c2/pyyaml-6.0.3.tar.gz
         sha256: d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f
+    cleanup:
+      - /bin
+      - /share/man/man1
   - name: python3-vdf
     buildsystem: simple
     build-commands:
@@ -47,6 +49,9 @@ modules:
       - type: file
         url: https://files.pythonhosted.org/packages/96/60/6456b687cf55cf60020dcd01f9bc51561c3cc84f05fd8e0feb71ce60f894/vdf-3.4-py2.py3-none-any.whl
         sha256: 68c1a125cc49e343d535af2dd25074e9cb0908c6607f073947c4a04bbe234534
+    cleanup:
+      - /bin
+      - /share/man/man1
   - name: python3-wxPython
     buildsystem: simple
     build-commands:
@@ -56,6 +61,9 @@ modules:
       - type: file
         url: https://files.pythonhosted.org/packages/22/43/81657a6b126ffc19163500a8184d683cec08eb4e1d06905cd0c371c702d0/wxpython-4.2.5.tar.gz
         sha256: 44e836d1bccd99c38790bb034b6ecf70d9060f6734320560f7c4b0d006144793
+    cleanup:
+      - /bin
+      - /share/man/man1
   - name: python3-lxml
     buildsystem: simple
     build-commands:
@@ -65,6 +73,9 @@ modules:
       - type: file
         url: https://files.pythonhosted.org/packages/28/30/9abc9e34c657c33834eaf6cd02124c61bdf5944d802aa48e69be8da3585d/lxml-6.1.0.tar.gz
         sha256: bfd57d8008c4965709a919c3e9a98f76c2c7cb319086b3d26858250620023b13
+    cleanup:
+      - /bin
+      - /share/man/man1
   - name: python3-pyfiglet
     buildsystem: simple
     build-commands:
@@ -74,6 +85,9 @@ modules:
       - type: file
         url: https://files.pythonhosted.org/packages/9f/5c/fe9f95abd5eaedfa69f31e450f7e2768bef121dbdf25bcddee2cd3087a16/pyfiglet-1.0.4-py3-none-any.whl
         sha256: 65b57b7a8e1dff8a67dc8e940a117238661d5e14c3e49121032bd404d9b2b39f
+    cleanup:
+      - /bin
+      - /share/man/man1
   - name: python3-PyMuPDF
     buildsystem: simple
     build-commands:
@@ -90,6 +104,9 @@ modules:
         sha256: c5e3d54922db1c7da844f1208ac1db05704770988752311f81dd36694ae0a07b
         only-arches:
           - aarch64
+    cleanup:
+      - /bin
+      - /share/man/man1
   - name: python3-reflink
     buildsystem: simple
     build-commands:
@@ -100,11 +117,14 @@ modules:
         url: https://files.pythonhosted.org/packages/9e/ef/008a1939e372c06329a3fce4279c02f328488f3526744906eeec3da7ad5f/cffi-2.1.1.tar.gz
         sha256: dd31f52ea1086513bb9df30f8fcee9b8918323ae067a3d5b78bc826a000712be
       - type: file
-        url: https://files.pythonhosted.org/packages/0c/c3/44f3fbbfa403ea2a7c779186dc20772604442dde72947e7d01069cbe98e3/pycparser-3.0-py3-none-any.whl
-        sha256: b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992
+        url: https://files.pythonhosted.org/packages/99/ce/b3ae9ee0324d991c860187be2a6ee436d27a3d02397eaddbb101ec901f3d/pycparser-3.1-py3-none-any.whl
+        sha256: f09d358c840bd147b79e55f2bc494f18ea869dc897f5852a8f5766b74f787882
       - type: file
         url: https://files.pythonhosted.org/packages/63/47/b503f286378336aa6d2fd3caad10633bb79f3bc6256f1f2f9102dacb3c98/reflink-0.2.2.tar.gz
         sha256: 882375ee7319275ae5f6a6a1287406365dac1e9643b91ad10e5187d3f84253bd
+    cleanup:
+      - /bin
+      - /share/man/man1
   - name: python3-requests
     buildsystem: simple
     build-commands:
@@ -128,6 +148,9 @@ modules:
       - type: file
         url: https://files.pythonhosted.org/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl
         sha256: 0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3
+    cleanup:
+      - /bin
+      - /share/man/man1
   - name: python3-send2trash
     buildsystem: simple
     build-commands:
@@ -137,6 +160,9 @@ modules:
       - type: file
         url: https://files.pythonhosted.org/packages/1c/78/504fdd027da3b84ff1aecd9f6957e65f35134534ccc6da8628eb71e76d3f/send2trash-2.1.0-py3-none-any.whl
         sha256: 0da2f112e6d6bb22de6aa6daa7e144831a4febf2a87261451c4ad849fe9a873c
+    cleanup:
+      - /bin
+      - /share/man/man1
   - name: python3-websocket-client
     buildsystem: simple
     build-commands:
@@ -146,3 +172,6 @@ modules:
       - type: file
         url: https://files.pythonhosted.org/packages/34/db/b10e48aa8fff7407e67470363eac595018441cf32d5e1001567a7aeba5d2/websocket_client-1.9.0-py3-none-any.whl
         sha256: af248a825037ef591efbf6ed20cc5faa03d3b47b9e5a2230a529eeee1c1fc3ef
+    cleanup:
+      - /bin
+      - /share/man/man1

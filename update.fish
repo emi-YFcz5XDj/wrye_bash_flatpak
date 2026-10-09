@@ -14,7 +14,7 @@ function gen_script_requirements
 end
 
 function gen_requirements
-	pip_gen -r requirements.txt --prefer-wheels lz4,PyMuPDF --ignore-installed lxml,requests
+	pip_gen -r requirements.txt --prefer-wheels PyMuPDF --ignore-installed lxml,requests --cleanup scripts
 	wait
 end
 

@@ -27,8 +27,8 @@ modules:
         url: https://files.pythonhosted.org/packages/9e/ef/008a1939e372c06329a3fce4279c02f328488f3526744906eeec3da7ad5f/cffi-2.1.1.tar.gz
         sha256: dd31f52ea1086513bb9df30f8fcee9b8918323ae067a3d5b78bc826a000712be
       - type: file
-        url: https://files.pythonhosted.org/packages/0c/c3/44f3fbbfa403ea2a7c779186dc20772604442dde72947e7d01069cbe98e3/pycparser-3.0-py3-none-any.whl
-        sha256: b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992
+        url: https://files.pythonhosted.org/packages/99/ce/b3ae9ee0324d991c860187be2a6ee436d27a3d02397eaddbb101ec901f3d/pycparser-3.1-py3-none-any.whl
+        sha256: f09d358c840bd147b79e55f2bc494f18ea869dc897f5852a8f5766b74f787882
       - type: file
         url: https://files.pythonhosted.org/packages/b6/01/f6e3c18ad9dabeb7302575b1174864fd90842bd4afedb3f5bdd926047ff4/pygit2-1.20.1-cp314-cp314-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl
         sha256: 860c971fd53a9f14713a51b6343827b82d2b7dc7955e8c28c81ca3c90033b6a2
