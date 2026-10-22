@@ -1,7 +1,7 @@
 From f54d87cc871728a4598bd841d6a7a2364794a539 Mon Sep 17 00:00:00 2001
 From: "Alice H." <alice.hall0451+vcs@gmail.com>
 Date: Thu, 8 Oct 2026 07:34:33 +0100
-Subject: [PATCH 7/7] change_game_not_found_dialog
+Subject: [PATCH 7/8] change_game_not_found_dialog
 
 Signed-off-by: Alice H. <alice.hall0451+vcs@gmail.com>
 ---

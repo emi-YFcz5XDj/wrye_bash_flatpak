@@ -1,7 +1,7 @@
 From 3de921abb4f2d2ce66ad0177585661ca81965c06 Mon Sep 17 00:00:00 2001
 From: "Alice H." <alice.hall0451+vcs@gmail.com>
 Date: Thu, 8 Oct 2026 07:33:52 +0100
-Subject: [PATCH 6/7] change_default_temp_dir
+Subject: [PATCH 6/8] change_default_temp_dir
 
 Signed-off-by: Alice H. <alice.hall0451+vcs@gmail.com>
 ---

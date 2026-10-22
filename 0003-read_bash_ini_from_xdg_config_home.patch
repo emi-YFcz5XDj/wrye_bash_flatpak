@@ -1,7 +1,7 @@
 From f0d6865ed5686c87f74309bd9066a08e0925d743 Mon Sep 17 00:00:00 2001
 From: "Alice H." <alice.hall0451+vcs@gmail.com>
 Date: Thu, 8 Oct 2026 07:33:11 +0100
-Subject: [PATCH 3/7] read_bash_ini_from_xdg_config_home
+Subject: [PATCH 3/8] read_bash_ini_from_xdg_config_home
 
 Signed-off-by: Alice H. <alice.hall0451+vcs@gmail.com>
 ---

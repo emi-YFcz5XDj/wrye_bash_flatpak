@@ -72,6 +72,7 @@ modules:
           - 0005-disable_update_checking.patch
           - 0006-change_default_temp_dir.patch
           - 0007-change_game_not_found_dialog.patch
+          - 0008-Fix-extracting-stored-files-from-compressed-BSAs-RRR.patch
       - type: file
         path: io.github.wrye_bash.wrye-bash.sh
       - type: file

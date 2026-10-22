@@ -1,0 +1,31 @@
+From 4a6fcac12042cf9166e8fe2b51f75c8fece0b035 Mon Sep 17 00:00:00 2001
+From: BeermotorWB <beermotor@gmail.com>
+Date: Tue, 20 Oct 2026 18:31:56 -0600
+Subject: [PATCH 8/8] Fix extracting stored files from compressed BSAs: RRR
+
+compression_toggle returned the masked size flag instead of a bool, so
+extract_assets XORed True with 0x40000000 for a file stored uncompressed
+in a compressed archive and tried to decompress it. Return a bool.
+
+Closes # 762 <-- RRR
+---
+ Mopy/bash/bosh/bsa_files.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Mopy/bash/bosh/bsa_files.py b/Mopy/bash/bosh/bsa_files.py
+index 947cc6815..07767d3e0 100644
+--- a/Mopy/bash/bosh/bsa_files.py
++++ b/Mopy/bash/bosh/bsa_files.py
+@@ -380,7 +380,8 @@ class BSAFileRecord(_BsaHashedRecord):
+     __slots__ = (u'file_size_flags', u'raw_file_data_offset')
+     formats = [(f, struct_calcsize(f)) for f in (u'I', u'I')]
+ 
+-    def compression_toggle(self): return self.file_size_flags & 0x40000000
++    def compression_toggle(self):
++        return bool(self.file_size_flags & 0x40000000)
+ 
+     def raw_data_size(self):
+         if self.compression_toggle():
+-- 
+2.52.0
+

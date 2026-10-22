@@ -1,7 +1,7 @@
 From ed89ec5ad38621c5370782cf5d5dbd27a2bdba2a Mon Sep 17 00:00:00 2001
 From: "Alice H." <alice.hall0451+vcs@gmail.com>
 Date: Thu, 8 Oct 2026 07:33:43 +0100
-Subject: [PATCH 5/7] disable_update_checking
+Subject: [PATCH 5/8] disable_update_checking
 
 Signed-off-by: Alice H. <alice.hall0451+vcs@gmail.com>
 ---
