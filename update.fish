@@ -18,10 +18,20 @@ function gen_requirements
 	wait
 end
 
+function get_commit
+	curl -L \
+		-H "Accept: application/vnd.github+json" \
+		-H "Authorization: Bearer $(gh auth token)" \
+		-H "X-GitHub-Api-Version: 2026-03-10" \
+		https://api.github.com/repos/loot/(string lower $argv[1])/commits?sha=$argv[2]&per_page=1 | \
+	jq -r ".[0].sha"
+end
+
 function gen_taglists
 	set -f taglist_version v0.29
 	for game in Enderal Fallout3 FalloutNV Fallout4 Morrowind Oblivion Skyrim SkyrimSE Starfield;
-		set -lx url https://raw.githubusercontent.com/loot/(string lower $game)/$taglist_version/masterlist.yaml
+		set -lx commit_hash (get_commit $game $taglist_version)
+		set -lx url https://raw.githubusercontent.com/loot/(string lower $game)/$commit_hash/masterlist.yaml
 		# @fish-lsp-disable-next-line 4004
 		set -lx dest_filename "$game"_masterlist.yaml
 		# @fish-lsp-disable-next-line 4004
